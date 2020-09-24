@@ -1,2 +1,9 @@
 클라이언트 요청방법
 	1. 웹 브라우저 주소창에 주소 입력 + enter -> get
+	
+	2. 버튼 클릭 -> form 전송 -> get / post 방식
+	
+	3. link연결 -> get 방식
+	
+	Http Method : get 방식 / post 방식만 가능
+	

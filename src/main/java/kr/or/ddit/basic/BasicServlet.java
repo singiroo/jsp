@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 // 2. doXXX 메소드를 구현한다.
 // 3. servlet은 정적 자료와 다르게 이름이 없다.
 // 	  localhost/ServletTest/index.html 식으로 호출 불가능
-// 	  url - 서블릿 매핑하는 작업이 별도로 필요
+// 	  url과 서블릿을 매핑하는 작업이 별도로 필요
 // 	  url을 직접 이름 생성해야한다.(web.xml)
 
 public class BasicServlet extends HttpServlet  {
