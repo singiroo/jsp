@@ -33,6 +33,8 @@ public class BasicServlet extends HttpServlet  {
 		
 		writer.flush();
 		writer.close();
+//		req.getRequestDispatcher("/request/request.jsp").forward(req, resp);
+		
 	}
 	
 
