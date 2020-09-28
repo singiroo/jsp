@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(function(){
+$(function(){ // 문서 로딩(html은 위에서부터 차례대로 읽어옴)이 끝나면 실행.
 	$('#btnSubmit').on('click', function(){
 
 		var method = $("#fform .method:checked").val();	

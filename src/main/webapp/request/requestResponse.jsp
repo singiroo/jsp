@@ -36,7 +36,7 @@
 		while(names.hasMoreElements()){
 			String name = names.nextElement();
 	%>
-			<p><%=name %>,</p>
+			<p><%=name %> </p>
 	<%
 	
 		}
