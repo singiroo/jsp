@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>scope 영역/수명 확인</title>
 </head>
 <body>
 	request : <%=request.getAttribute("requestAttr") %> <br>

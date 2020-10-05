@@ -10,6 +10,7 @@
 <%
 	out.println("getServerInfo() : " +application.getServerInfo()+"<br>");
 	out.println("application.getContextPath() : " + application.getContextPath()+"<br>");
+	out.println("application.getServletContextName() : " + application.getServletContextName()+"<br>");
 	out.println("application.getMajorVersion() : " + application.getMajorVersion()+"<br>");
 	out.println("application.getMinorVersion() : " + application.getMinorVersion()+"<br>");
 	
