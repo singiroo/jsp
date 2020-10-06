@@ -9,7 +9,7 @@
 <body>
 	<h1>
 		<%
-			request.getRequestDispatcher("/include/header.jsp").include(request, response);
+			request.getRequestDispatcher("/include/header.jsp?param=sally").include(request, response);
 		
 		%>
 	</h1>

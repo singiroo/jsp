@@ -8,11 +8,14 @@
 </head>
 <body>
  <%
-	throw new RuntimeException();
-// 	int a = 0;
-// 	int b = 10 / a;
-
-%>
+// 	throw new ArithmeticException();
+ 
+//  	int a = 0;
+//  	int b = 10 / a;
+ 	
+ 	int[] c  = new int[2];
+ 	c[3] = 1;
+ %>
 
 </body>
 </html>
