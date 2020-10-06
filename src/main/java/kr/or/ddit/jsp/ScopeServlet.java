@@ -17,18 +17,34 @@ public class ScopeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/jsp/scopeView.jsp").forward(req, resp);
+	}
+	
+	
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//request, session, application 객체에 각각 속성을 저장
-		request.setAttribute("requestAttr", "requestValue");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getSession().setAttribute("sessionAttr", "sessionValue");
+		String param = request.getParameter("param");
+		
+		
+		
+		
+		
+		
+		//request, session, application 객체에 각각 속성을 저장
+		request.setAttribute("requestAttr", param);
+		
+		request.getSession().setAttribute("sessionAttr", param);
 		
 		ServletContext sc = getServletContext();
-		sc.setAttribute("applicationAttr", "applicationValue");
+		sc.setAttribute("applicationAttr", param);
 		
 		
 		
