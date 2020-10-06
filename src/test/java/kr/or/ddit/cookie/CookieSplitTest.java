@@ -12,12 +12,16 @@ public class CookieSplitTest {
 	public void getCookieValueTest() {
 		/***Given***/
 		CookieSplit cookieSplit = new CookieSplit();
+		String[] cookieNames = {"USERNM", "REMEMBERME", "TEST", "???"};
+		String[] expectedValues = {"brown", "Y", "T", ""};
 
 		/***When***/
-		String cookieValue = cookieSplit.getCookieValue("USERNM");
+		for(int i=0; i<cookieNames.length; i++ ) {
+			String cookieValue = cookieSplit.getCookieValue(cookieNames[i]);			
+			assertEquals(expectedValues[i], cookieValue);
+		}
 		
 		/***Then***/
-		assertEquals("brown", cookieValue);
 		
 	}
 
