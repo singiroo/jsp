@@ -9,8 +9,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
+    <link rel="icon" href="../../favicon.ico">   
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
@@ -19,19 +18,35 @@
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath() %>/css/signin.css" rel="stylesheet">
 
+    <script type="text/javascript" src="<%=request.getContextPath() %>/js/js.cookie-2.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		window.onload = function(){
-			input = prompt("쿠키 이름을 입력하세요");
-			var result1 = getCookieValue(input);
+	$(function(){
+		//remember me cookie 확인
+		if(Cookies.get("REMEMBERME")=="Y"){
+			$('#inputEmail').val(Cookies.get("userId"));
+			$('#REMEMBERME').prop('checked',true);
 
-			var result2 = getCookieValue("userId");
-			var result3 = getCookieValue("NOEXISTS_COOKIE");
-		
-			console.log(result1);
-			console.log(result2);
-			console.log(result3);
 		}
-	
+		//remember me check 여부에 의한 쿠키 생성/제거
+		$('#submit').on('click', function(){
+			console.log('clicked!');
+			var id = "";
+			if($('#REMEMBERME').prop('checked')){
+				id = $('#inputEmail').val();
+				Cookies.set("REMEMBERME", "Y");
+				Cookies.set("userId", id);
+			}else{
+				Cookies.remove("REMEMBERME");
+				Cookies.remove("userId");
+			}
+			console.log(id);
+			$('form').submit();
+		})
+	})
+		
+		
+		
 	
 		function getCookieValue(cookieName){
 			var cookies = document.cookie.split("; ");
@@ -46,6 +61,24 @@
 			}
 			return result
 		}
+
+		function setCookie(cookieName, cookieValue, expires){
+			//"USERNM=brown; path=/; expires = Wed, 07 Oct 2020 00:30:30 GMT;"
+			
+			var today = new Date();
+			//현재날짜에서 미래로 + expires 만큼 한 날짜 구하기
+			today.setDate(today.getDate() + expires);
+
+			//날짜 포맷을 GMT로 변환하여 쿠키 문자열 완성
+			document.cookie = cookieName + "=" + cookieValue + "; path=/; expires=" + today.toGMTString()+";";
+			console.log(document.cookie);
+		}
+		// 해당 쿠키의 expires 속성의 값을 과거날짜로 변경
+		function deleteCookie(cookieName){
+			setCookie(cookieName, "", -1);
+		}
+		
+		
 	</script>
   </head>
   
@@ -56,20 +89,25 @@
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" action="<%=request.getContextPath() %>/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" name="userId" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" id="REMEMBERME" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+<!--         <button id="submit" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button> -->
+        <input id="submit" class="btn btn-lg btn-primary btn-block" type="button" value="sign in">Sign in
       </form>
-
+      
+<!-- form 태그 안에서 식별자로 submit을 쓰는 경우 submit()메서드가 동작 안함. 
+	 form 내부 요소이므로 submit 요소도 전송되는데 이 때 document.form.submit.submit()시 이름 충돌이 일어나 submit()이 실행되지 않음.
+	 form 태그 외부에서는 식별자가 submit이어도 전송대상이 아니므로 submit()메서드가 정상 작동.  -->
+	 
     </div> <!-- /container -->
 
 
