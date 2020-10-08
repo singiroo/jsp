@@ -29,7 +29,7 @@
 
 		}
 		//remember me check 여부에 의한 쿠키 생성/제거
-		$('#submit').on('click', function(){
+		$('#submit2').on('click', function(){
 			console.log('clicked!');
 			var id = "";
 			if($('#REMEMBERME').prop('checked')){
@@ -92,16 +92,16 @@
       <form class="form-signin" action="<%=request.getContextPath() %>/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="userId" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" name="userId" id="inputEmail" value="brown" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" id="inputPassword" value="passBrown" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" id="REMEMBERME" value="remember-me"> Remember me
           </label>
         </div>
 <!--         <button id="submit" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button> -->
-        <input id="submit" class="btn btn-lg btn-primary btn-block" type="button" value="sign in">Sign in
+        <input id="submit2" class="btn btn-lg btn-primary btn-block" type="button" value="sign in">Sign in
       </form>
       
 <!-- form 태그 안에서 식별자로 submit을 쓰는 경우 submit()메서드가 동작 안함. 

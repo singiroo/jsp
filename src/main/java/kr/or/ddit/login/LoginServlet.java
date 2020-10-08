@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.member.model.MemberVO;
+import kr.or.ddit.member.service.MemberService;
+import kr.or.ddit.member.service.MemberServiceI;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -36,7 +40,31 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		logger.debug("userId : {}, password : {}", userId, password);
-	
+		
+		//파라미터로 온 userId가 db상에 존재하는 지 확인하고, 비밀번호가 데이터베이스에 저장된 비밀번호와 일치하는 지 확인
+		
+		//일치할 경우
+			//main 페이지 이동
+		//일치하지 않을 경우
+			//login 페이지로 이동
+		
+		MemberServiceI memberService = new MemberService();
+		MemberVO memberVo = memberService.getMember(userId);
+		
+		//db에 등록된 회원이 없는 경우(로그인 페이지)
+		if(memberVo == null || !memberVo.getPassword().equals(password)) {
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
+		}
+		//비밀번호가 일치하는 경우(메인페이지 이동)
+		else if(memberVo.getPassword().equals(password)) {
+			request.getSession().setAttribute("S_MEMBER", memberVo);
+			request.getRequestDispatcher("/main.jsp").forward(request, response);
+			
+		}
+		
+		
+		
+		
 		//쿠키정보 확인
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies) {
