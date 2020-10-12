@@ -1,0 +1,37 @@
+DBMS입장에서 동일한 SQL이란 ?
+ =>모든 문자가 동일한 SQL
+
+다음 SQL은 DBMS 입장에서는 서로 다른 SQL로 인식된다.
+
+SELECT * FROM mymember;
+
+SELECT * FROM  mymember;
+
+SELECt * FROM mymember;
+
+는 모두 다른 SQL로 인식
+
+실행 계획이 있으면 재사용
+없으면 만듬.
+
+
+MemberDao 새로운 기능 추가
+전체 사용자 조회
+1. 메소드, sql id 이름??? ==> selectAllMember, getAllMember, getMemberList
+2. 해당 sql 실행할 때 파라미터가 필요한가?? do not need
+	select * from member
+	  
+3. 해당 sql 실행 했을 때 반환되는 타입은 어떤???? list<MemberVO>
+
+dao, daoTest 코드 작성
+
+mapper, daoI, dao, daoTest
+
+left 메뉴의 jobs 클릭시
+jobs 테이블에 저장된 모든 데이터를 table 태그를 이용하여 화면에 출력(job_id, jot_title 두개 컬럼만 화면에 표시)
+servlet(controller), service(service), dao(repository), model, view, 테스트코드(service, dao)
+
+member.xml ==> jobs.xml ==> mybatis.config.xml
+
+
+

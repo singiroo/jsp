@@ -18,7 +18,7 @@ public class MemberServiceTest {
 		
 		MemberVO answerMemberVo = new MemberVO();
 		answerMemberVo.setUserId("brown");
-		answerMemberVo.setPassword("passBrown");
+		answerMemberVo.setPass("brownPass");
 		/***When***/
 		MemberVO memberVo = memberService.getMember(userId);
 		
