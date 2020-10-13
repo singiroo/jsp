@@ -47,13 +47,5 @@
 	rangersList[0].userId : ${rangersList[0].userId } <br>
 	rangersList[1] : ${rangersList[1] } <br>
 	
-	 
-	
-
-
-
-
-
-
 </body>
 </html>
