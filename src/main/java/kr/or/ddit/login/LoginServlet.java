@@ -22,6 +22,14 @@ import kr.or.ddit.member.service.MemberServiceI;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static final Logger logger = LoggerFactory.getLogger(LoginServlet.class);
+    private MemberServiceI memberService;
+    
+    @Override
+    public void init() throws ServletException {
+    	//service 객체 생성 및 초기화
+    	memberService = new MemberService();
+    }
+    
   
 	/**
 	 * login 화면을 클라이언트에게 응답으로 생성
@@ -48,7 +56,7 @@ public class LoginServlet extends HttpServlet {
 		//일치하지 않을 경우
 			//login 페이지로 이동
 		
-		MemberServiceI memberService = new MemberService();
+		 
 		MemberVO memberVo = memberService.getMember(userId);
 		
 		//db에 등록된 회원이 없는 경우(로그인 페이지)
