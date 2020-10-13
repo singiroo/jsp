@@ -59,6 +59,11 @@ public class LoginServlet extends HttpServlet {
 		 
 		MemberVO memberVo = memberService.getMember(userId);
 		
+		//////////////// Model 단 /////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
+		
+		
 		//db에 등록된 회원이 없는 경우(로그인 페이지)
 		if(memberVo == null || !memberVo.getPass().equals(password)) {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

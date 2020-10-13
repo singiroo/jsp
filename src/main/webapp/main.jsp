@@ -34,10 +34,11 @@
 				<span class="sr-only">Toggle navigation</span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
-			</button>]
-			<% MemberVO memberVo = (MemberVO)session.getAttribute("S_MEMBER"); %>
-			<a class="navbar-brand" href="#">JSP/SPRING
-			 <% if(memberVo != null) out.print("["+memberVo.getUserId()+"]"); %></a>
+			</button>
+			<%-- MemberVO memberVo = (MemberVO)session.getAttribute("S_MEMBER"); --%>
+			
+			<a class="navbar-brand" href="#">JSP/SPRING [ ${S_MEMBER.userId} ]
+			 <%-- if(memberVo != null) out.print("["+memberVo.getUserId()+"]"); --%></a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
