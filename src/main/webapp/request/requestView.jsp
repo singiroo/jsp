@@ -54,7 +54,7 @@ $(function(){ // 문서 로딩(html은 위에서부터 차례대로 읽어옴)�
 		        request.getParameter()메소드를 호출하기 전에 설정을 해줘야 한다. --%>
 	<%-- action : 요청을 보낼 경로
 		 method : 요청 방식(form에서는 GET, POST 두가지만 가능하며 DEFAULT는 GET)  --%>
-<%-- 	<form action="<%=request.getContextPath() %>/request/getRequestResponse.jsp" method="GET"> --%>
+<%-- 	<form action="${pageContext.request.contextPath }/request/getRequestResponse.jsp" method="GET"> --%>
 <!-- 		<label>user id : </label> -->
 <!-- 		<input type="text" name="userId" value ="michael"> -->
 <!-- 		<br> -->
@@ -70,7 +70,7 @@ $(function(){ // 문서 로딩(html은 위에서부터 차례대로 읽어옴)�
 	GET POST 두가지를 선택할수 있는 라디오 버튼을 만들어서
 	FORM 전송시 사용자가 GET, POST 방식을 지정할 수 있도록
 	
-	<form id="fform" action="<%=request.getContextPath() %>/request/getRequestResponse.jsp" method="">
+	<form id="fform" action="${pageContext.request.contextPath }/request/getRequestResponse.jsp" method="">
 		<label>submit method</label>
 		<input type="radio" class="method" name = "method" value = "GET">GET
 		<input type="radio" class="method" name = "method" value = "POST">POST

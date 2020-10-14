@@ -15,7 +15,7 @@
 	request.getProtocol() : 요청 프로토콜 = <%=request.getProtocol() %><br>
 	request.getMethod() : 요청 메소드 = <%=request.getMethod() %><br>
 	request.getRequestURI() : 요청 URI = <%=request.getRequestURI() %><br>
-	request.getContextPath() : contextPath(웹 애플리케이션 이름) = <%=request.getContextPath() %><br>
+	request.getContextPath() : contextPath(웹 애플리케이션 이름) = ${pageContext.request.contextPath }<br>
 	request.getServerName() : 서버이름 = <%=request.getServerName() %><br>
 	request.getServerPort() : 서버포트 = <%=request.getServerPort() %><br>
 	request.getServletContext() : 마지막 디스패치된 서블릿 = <%=request.getServletContext() %><br>

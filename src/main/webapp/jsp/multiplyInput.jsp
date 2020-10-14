@@ -28,7 +28,7 @@ input[type=submit]{
 <fieldset>
 <legend>두 숫자 곱하기</legend>
 <p> 곱할 두 숫자를 입력하세요 </p>
-<form action="<%=request.getContextPath()%>/mulCalculation" method="post">
+<form action="${pageContext.request.contextPath }/mulCalculation" method="post">
 
 <label>숫자 1 : </label> <input type="text" name="param1"/><br>
 <label>숫자 2 : </label> <input type="text" name="param2"/><br>

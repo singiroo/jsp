@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=request.getContextPath()%>/el" method="POST">
+	<form action="${pageContext.request.contextPath }/el" method="POST">
 		
 		<% String scope = request.getParameter("scope");
 		   String requestParam = "";

@@ -9,7 +9,7 @@
 <body>
 
 <h2>화면 요청</h2>
-<form action= "<%=request.getContextPath() %>/sumCalculationServlet" method="post">
+<form action= "${pageContext.request.contextPath }/sumCalculationServlet" method="post">
 
 <p>시작 값은 끝 값 보다 작은 값을 입력하세요.</p>
 
