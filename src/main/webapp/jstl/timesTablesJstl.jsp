@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JSTL을 이용한 timesTables</title>
 <style>
 table{
 	border-collapse: collapse;

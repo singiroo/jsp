@@ -45,7 +45,7 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-			<c:forEach var="member" items="${memberList }">
+			<c:forEach var="member" items="${map.memberList }">
 				<tr>
 				<td>${member.userId }</td>
 				<td>${member.userNm }</td>
@@ -61,11 +61,9 @@
 
 		<div class="text-center">
 			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<c:forEach var="i" begin="1" end="${map.totalPage }" >
+					<li><a href="${pageContext.request.contextPath }/memberList?page=${i}">${i }</a></li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>

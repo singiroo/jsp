@@ -21,4 +21,26 @@ public class JobsDao implements JobsDaoI {
 		return jobsList;
 	}
 
+	@Override
+	public int getAllJobsCnt() throws SQLException {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		
+		int totalCnt = sqlSession.selectOne("jobs.getAllJobsCnt"); 
+		
+		sqlSession.close();
+		
+		return totalCnt;
+	}
+
+	@Override
+	public List<JobsVo> getJobsPageList(int page) throws SQLException {
+		SqlSession sqlSession = MybatisUtil.getSqlSession();
+		
+		List<JobsVo> jobsList = sqlSession.selectList("jobs.getJobsPageList", page);
+		
+		sqlSession.close();
+		
+		return jobsList;
+	}
+
 }

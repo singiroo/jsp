@@ -6,6 +6,29 @@
 
 <mapper namespace="jobs">
   <select id="getAllJobs" resultType="JobsVo">
+    
     select job_id, job_title from jobs
+  
   </select>
+  
+  
+  <select id="getAllJobsCnt" resultType="int">
+  	
+  	select count(*) from jobs
+
+  </select>
+  
+  <select id="getJobsPageList" resultType="JobsVo" parameterType="int">
+  	
+  	select B.*
+  	from(select rownum as rn,
+  	            A.*
+  		  from (select * from jobs order by job_id)A)B
+  	where B.rn between (#{page}-1) * 5 + 1 and #{page} * 5 
+  
+  
+  </select>
+  
+  
+  
 </mapper>

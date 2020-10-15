@@ -2,6 +2,7 @@ package kr.or.ddit.member.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +31,18 @@ public class MemberListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<MemberVO> memberList = memberService.selectAllMember();
-		request.setAttribute("memberList", memberList);
+		String pageText = request.getParameter("page");
+		int page = 1;
+		if(pageText != null) {
+			page = Integer.parseInt(pageText);		
+		}
+		
+//		List<MemberVO> memberList = memberService.selectMemberPageList(page);
+//		request.setAttribute("memberList", memberList);
+		Map<String, Object> map = memberService.selectPagingComponent(page);
+		
+		request.setAttribute("map", map);
+		
 		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response);
 	}
 

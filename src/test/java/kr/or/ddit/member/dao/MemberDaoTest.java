@@ -24,22 +24,46 @@ public class MemberDaoTest {
 		answerMemberVo.setPass("brownPass");
 		
 		/***Then***/
-//		assertEquals("brown", memberVo.getUserId());
-//		assertEquals("passBrown", memberVo.getPassword());
+		assertEquals("brown", memberVo.getUserId());
+		assertEquals("brownPass", memberVo.getPass());
 		
-		assertEquals(answerMemberVo, memberVo);
+//		assertEquals(answerMemberVo, memberVo);
 	}
 	
 	@Test
 	public void selectAllMemberTest() {
 		/***Given***/
 		MemberDaoI memberDao = new MemberDao();
-
 		/***When***/
 		List<MemberVO> memberList = memberDao.selectAllMember();
 		
 		/***Then***/
-		assertEquals(5, memberList.size());
+		assertEquals(15, memberList.size());
+	}
+	
+	@Test
+	public void selectMemberPageListTest() {
+		/***Given***/
+		MemberDaoI memberDao = new MemberDao();
+		int page = 1;
+		/***When***/
+		List<MemberVO> memberList = memberDao.selectMemberPageList(page);
+		
+		/***Then***/
+		assertEquals(7, memberList.size());
+		
+	}
+	
+	@Test
+	public void selectMemberTotalCntTest() {
+		/***Given***/
+		MemberDaoI memberDao = new MemberDao();
+
+		/***When***/
+		int totalCnt = memberDao.selectMemberTotalCnt();
+		
+		/***Then***/
+		assertEquals(15, totalCnt);
 	}
 	
 }

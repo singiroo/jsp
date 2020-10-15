@@ -43,16 +43,26 @@
 				<tr>
 					<th>직업 코드</th>
 					<th>직업명</th>
+					<th>최소급여</th>
+					<th>최대급여</th>
 				</tr>
-
-				<% List<JobsVo> jobsList = (List<JobsVo>)request.getAttribute("jobsList");
+				
+				<c:forEach var="jobs" items="${map.jobsList }" >
+					<tr>
+						<td>${jobs.job_id }</td>
+						<td>${jobs.job_title }</td>
+						<td>${jobs.min_salary }</td>
+						<td>${jobs.max_salary }</td>
+					</tr>
+				</c:forEach>
+				<%-- <% List<JobsVo> jobsList = (List<JobsVo>)request.getAttribute("jobsList");
 					for(JobsVo jobs : jobsList){
 						out.println("<tr>");
 						out.println("<td>"+jobs.getJob_id()+"</td>");
 						out.println("<td>"+jobs.getJob_title()+"</td>");
 						out.println("</tr>");
 					}
-				%>
+				%> --%>
 			</table>
 		</div>
 
@@ -60,11 +70,9 @@
 
 		<div class="text-center">
 			<ul class="pagination">
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<c:forEach var="i" begin="1" end="${map.totalPage }" step="1">
+					<li><a href="${pageContext.request.contextPath }/jobsServlet?page=${i}">${i }</a></li>
+				</c:forEach>	
 			</ul>
 		</div>
 	</div>
