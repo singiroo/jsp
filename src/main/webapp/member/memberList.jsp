@@ -56,13 +56,25 @@
 			</c:forEach>
 			</table>
 		</div>
-
+		memberList.size() : ${memberList.size() }<br>
+		pages : ${totalPage }<br>
+		currPage : ${pageNo }<br>
+		pageSize : ${pageSize}
+		
 		<a class="btn btn-default pull-right">사용자 등록</a>
 
 		<div class="text-center">
 			<ul class="pagination">
 				<c:forEach var="i" begin="1" end="${map.totalPage }" >
-					<li><a href="${pageContext.request.contextPath }/memberList?page=${i}">${i }</a></li>
+					<c:choose>
+						<c:when test="${i == pageNo}">
+							<li class="active"><span>${i}</span></li>					
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageContext.request.contextPath }/memberList?page=${i}&pageSize=${pageSize}">${i }</a></li>					
+						</c:otherwise>
+					</c:choose>
+					
 				</c:forEach>
 			</ul>
 		</div>

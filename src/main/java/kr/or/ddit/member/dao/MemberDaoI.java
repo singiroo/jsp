@@ -2,6 +2,9 @@ package kr.or.ddit.member.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
+import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.member.model.MemberVO;
 
 public interface MemberDaoI {
@@ -10,9 +13,9 @@ public interface MemberDaoI {
 	
 	public List<MemberVO> selectAllMember();
 	
-	public List<MemberVO> selectMemberPageList(int page);
+	public List<MemberVO> selectMemberPageList(SqlSession sqlSession, PageVO pageVo);
 	
-	public int selectMemberTotalCnt();
+	public int selectMemberTotalCnt(SqlSession sqlSession);
 
 	
 }

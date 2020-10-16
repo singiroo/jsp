@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.member.model.MemberVO;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
@@ -32,16 +33,33 @@ public class MemberListServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pageText = request.getParameter("page");
+		String pageSizeText = request.getParameter("pageSize");
+		
 		int page = 1;
+		int pageSize = 5;
+		
 		if(pageText != null) {
 			page = Integer.parseInt(pageText);		
 		}
 		
-//		List<MemberVO> memberList = memberService.selectMemberPageList(page);
+		if(pageSizeText != null) {
+			pageSize = Integer.parseInt(pageSizeText);
+		}
+		
+		PageVO pageVo = new PageVO(page, pageSize);
+//		pageVo.setPage(page);
+//		pageVo.setPageSize(pageSize);
+		
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("pageNo", page);
+		
+		
 //		request.setAttribute("memberList", memberList);
-		Map<String, Object> map = memberService.selectPagingComponent(page);
+		Map<String, Object> map = memberService.selectPagingComponent(pageVo);
 		
 		request.setAttribute("map", map);
+		request.setAttribute("memberList", map.get("memberList"));
+		request.setAttribute("totalPage", map.get("totalPage"));
 		
 		request.getRequestDispatcher("/member/memberList.jsp").forward(request, response);
 	}

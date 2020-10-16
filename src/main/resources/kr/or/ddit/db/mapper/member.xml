@@ -12,11 +12,11 @@
   	SELECT * FROM users
   </select>
   
-  <select id="selectMemberPageList" resultType="MemberVO" parameterType="int">
+  <select id="selectMemberPageList" resultType="MemberVO" parameterType="PageVO">
 	  select T2.*
 		  from (select rownum as rn, T1.* 
 		  		  from (select * from users order by userid)T1) T2
-	     where T2.rn between (#{page}-1) * 7 +1 and #{page} * 7
+	     where T2.rn between (#{page}-1) * ${pageSize} +1 and #{page} * #{pageSize}
   </select>
   
   <select id="selectMemberTotalCnt" resultType="int">
