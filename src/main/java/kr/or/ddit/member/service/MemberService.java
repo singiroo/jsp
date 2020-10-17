@@ -16,7 +16,11 @@ import kr.or.ddit.member.model.MemberVO;
 public class MemberService implements MemberServiceI {
 	
 	private MemberDaoI memberDao;
-	private SqlSession sqlSession;
+	private SqlSession sqlSession;           // sqlSession을 만드는 것은 연결을 생성하는 것으로 시스템 부하가 많이 걸림.
+	                                         // 따라서 dao에서 SqlSession 객체를 생성하여 만들면 트랜잭션 단위가 아닌 dao 메서드 단위로 연결이 생성되어
+											 // 부하가 너무 심해짐에 따라 service 단에서 트랜잭션단위로 SqlSession 객체를 생성한다.
+	                                         // 또한 같은 트랜잭션에서는 같은 연결을 사용하는 것이 로직적으로 바람직하다.
+											 // dao 단에서 세부 작업별로 SqlSession을 생성하는 것은 마치 developer 창을 여러개 띄워놓고 작업하는 것과 같음.
 	
 	public MemberService() {
 		memberDao = new MemberDao();

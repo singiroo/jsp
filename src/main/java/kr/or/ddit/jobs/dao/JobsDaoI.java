@@ -3,6 +3,9 @@ package kr.or.ddit.jobs.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
+import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.jobs.model.JobsVo;
 
 public interface JobsDaoI {
@@ -40,7 +43,7 @@ public interface JobsDaoI {
 	 *
 	 * </pre>
 	 */
-	public int getAllJobsCnt() throws SQLException;
+	public int getAllJobsCnt(SqlSession sqlSession) throws SQLException;
 	
 	/**
 	 * 요청받은 페이지에서 출력할 직업의 목록을 가져오는 메서드
@@ -57,7 +60,7 @@ public interface JobsDaoI {
 	 *
 	 * </pre>
 	 */
-	public List<JobsVo> getJobsPageList(int page) throws SQLException;
+	public List<JobsVo> getJobsPageList(SqlSession sqlSession, PageVO pageVo) throws SQLException;
 	
 
 }

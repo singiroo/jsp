@@ -1,43 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>국제화</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/js.cookie-2.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath }/js/js.cookie-2.2.1.min.js"></script>
 <script>
 
 $(function(){
-	if(Cookies.get("lang") != null){
-		var lang = Cookies.get("lang");
-		$('option[value = '+lang+']').prop('selected', true)
+	console.log("<c:out value = '${param.lang}'/>")
+	
+	var lang = "<c:out value = '${param.lang}'/>"
+		
+	if(lang != ""){
+		$('option[value = '+lang+']').prop('selected', true).css({'color' : 'red', 'font-weight' : 'bold'})
 	}else{
-		$('option[value = jas]').prop('selected', true)
+		$('option[value = ko]').prop('selected', true)
 	}
 
-
 	$('select').on('change', function(){
-		var langVal = $('option:selected').val()
-		Cookies.set("lang", langVal)
-		console.log('ok')
-		console.log('${cookie.lang.value}')
-		
+		$('form').submit()
 		
 	})
 	
 })
 
-
-
-
-
-
 </script>
-
-
 
 </head>
 <body>
@@ -50,25 +42,26 @@ $(function(){
 		    EL안에서 삼항연산자 사용가능 --%>
 
 	<!-- locale 정보를 변경  -->
-	<fmt:setLocale value="${param.lang }" />
+	<fmt:setLocale value="${param.lang }" scope="request" />
 	
 	
-	<form action="?lang=${cookie.lang.value }" method="get">
-		<select id="langSelect">
-			<option class="lang" name="lang" value="ko">ko</option>
-			<option class="lang" name="lang" value="ja">ja</option>
-			<option class="lang" name="lang" value="en">en</option>
+	<form action="${pageContext.request.contextPath }/jstl/jstl_fmt.jsp" method="get">
+		<select name="lang">
+			<option class="lang"  value="ko">ko</option>
+			<option class="lang"  value="ja">ja</option>
+			<option class="lang"  value="en">en</option>
 		</select>	
 	</form>
 	
 	
-	
+
 
 	<!-- 사용할 리소스 번들 설정 (리소스번들명_로케일.properties)
 		kr.or.ddit.resource message_로케일.properties  -->
 	<%
 		request.setAttribute("userId", "brown");
 	%>
+	
 	<fmt:bundle basename="kr.or.ddit.resource.message">
 		<fmt:message key="GREETING" var="greeting"/>[${greeting }] <br>
 		<fmt:message key="LOGIN_MSG"> 

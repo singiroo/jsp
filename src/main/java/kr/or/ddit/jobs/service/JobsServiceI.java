@@ -3,6 +3,7 @@ package kr.or.ddit.jobs.service;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.jobs.model.JobsVo;
 
 public interface JobsServiceI {
@@ -40,5 +41,5 @@ public interface JobsServiceI {
 	 *
 	 * </pre>
 	 */
-	public Map<String, Object> getPagingComponents(int page);
+	public Map<String, Object> getPagingComponents(PageVO pageVo);
 }

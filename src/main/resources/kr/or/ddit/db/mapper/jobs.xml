@@ -18,13 +18,13 @@
 
   </select>
   
-  <select id="getJobsPageList" resultType="JobsVo" parameterType="int">
+  <select id="getJobsPageList" resultType="JobsVo" parameterType="PageVO">
   	
   	select B.*
   	from(select rownum as rn,
   	            A.*
   		  from (select * from jobs order by job_id)A)B
-  	where B.rn between (#{page}-1) * 5 + 1 and #{page} * 5 
+  	where B.rn between (#{page}-1) * #{pageSize} + 1 and #{page} * #{pageSize} 
   
   
   </select>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.db.MybatisUtil;
 import kr.or.ddit.jobs.model.JobsVo;
 
@@ -22,25 +23,13 @@ public class JobsDao implements JobsDaoI {
 	}
 
 	@Override
-	public int getAllJobsCnt() throws SQLException {
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
-		
-		int totalCnt = sqlSession.selectOne("jobs.getAllJobsCnt"); 
-		
-		sqlSession.close();
-		
-		return totalCnt;
+	public int getAllJobsCnt(SqlSession sqlSession) throws SQLException {
+		return sqlSession.selectOne("jobs.getAllJobsCnt");
 	}
 
 	@Override
-	public List<JobsVo> getJobsPageList(int page) throws SQLException {
-		SqlSession sqlSession = MybatisUtil.getSqlSession();
-		
-		List<JobsVo> jobsList = sqlSession.selectList("jobs.getJobsPageList", page);
-		
-		sqlSession.close();
-		
-		return jobsList;
+	public List<JobsVo> getJobsPageList(SqlSession sqlSession, PageVO pageVo ) throws SQLException {
+		return sqlSession.selectList("jobs.getJobsPageList", pageVo);
 	}
 
 }

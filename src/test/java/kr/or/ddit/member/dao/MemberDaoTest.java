@@ -59,7 +59,7 @@ public class MemberDaoTest {
 		List<MemberVO> memberList = memberDao.selectMemberPageList(sqlSession, pageVo);
 		
 		/***Then***/
-		assertEquals(5, memberList.size());
+		assertEquals(pageSize, memberList.size());
 		
 	}
 	
