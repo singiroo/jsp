@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,11 @@
 				<td>${member.userId }</td>
 				<td>${member.userNm }</td>
 				<td>${member.alias }</td>
-				<td>${member.reg_dt }</td>
+				<!-- format : yyyy-MM-dd -->
+				<td>
+					<fmt:formatDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/>	
+					<%-- <fmt:parseDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/> --%>
+				</td>
 				</tr>
 		
 			</c:forEach>

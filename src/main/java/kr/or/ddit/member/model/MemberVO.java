@@ -1,11 +1,13 @@
 package kr.or.ddit.member.model;
 
+import java.sql.Date;
+
 public class MemberVO {
 	private String userId;
 	private String userNm;
 	private String pass;
 	private String alias;
-	private String reg_dt;
+	private Date reg_dt;
 	
 	
 	
@@ -25,11 +27,11 @@ public class MemberVO {
 		this.alias = alias;
 	}
 
-	public String getReg_dt() {
+	public Date getReg_dt() {
 		return reg_dt;
 	}
 
-	public void setReg_dt(String reg_dt) {
+	public void setReg_dt(Date reg_dt) {
 		this.reg_dt = reg_dt;
 	}
 
