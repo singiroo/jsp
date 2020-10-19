@@ -24,21 +24,13 @@ $(function(){
 		$('option[value = ko]').prop('selected', true)
 	}
 
-
-
 	
-
 	$('select').on('change', function(){
 		$('form').submit()
 		
-	})
+	});
 
-
-
-
-	
-	
-})
+});
 
 </script>
 
@@ -50,7 +42,8 @@ $(function(){
 		 3. 페이지가 로딩이 되었을 때 사용자가 요청한 언어로 option 태그가 선택이 된 상태로 표현
 		 4. 만약에 사용자가 언어 설정 파라미터를 보내지 않았을 경우 기본값으로 한국어가 설정되게 끔
 		 5. option 태그가 바뀌면 자동으로 jstl_fmt.jsp로 재요청 
-		    EL안에서 삼항연산자 사용가능 
+		    EL안에서 삼항연산자 사용가능
+		     
 		 document.location ="/jstl/jstl_fmt.jsp?lang=" + $("select 박스 셀렉트").val()   --%>
 		 
 	<!-- locale 정보를 변경  -->
@@ -72,6 +65,7 @@ $(function(){
 
 	<!-- 사용할 리소스 번들 설정 (리소스번들명_로케일.properties)
 		kr.or.ddit.resource message_로케일.properties  -->
+	<!-- 리소스 번들 파일을 설정하고 그 파일안에서 값을 가져오는 방식  -->
 	<%
 		request.setAttribute("userId", "brown");
 	%>
@@ -82,13 +76,14 @@ $(function(){
 			<fmt:param value="${userId }"/>
 		</fmt:message>
 	</fmt:bundle>
+	
 
 	<h3>setBundle</h3>
 	<!-- setBundle : 번들 메시지를 변수에 저장하여 message 태그에서 사용하게끔 하는 태그 -->
+	<!-- 번들 파일을 로드하여 변수에 저장하고 그 변수로부터 값을 가져오는 방식  -->
+	<fmt:setBundle basename="kr.or.ddit.resource.message" var="msg" />
 	
-	<fmt:setBundle basename="kr.or.ddit.resource.message" var="msg"/>
-	
-	<fmt:message key="GREETING" bundle="${msg }"/>
+	<fmt:message key="GREETING" bundle="${msg }" />
 	
 	
 	

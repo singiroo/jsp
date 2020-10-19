@@ -7,7 +7,7 @@ public class MemberVO {
 	private String userNm;
 	private String pass;
 	private String alias;
-	private Date reg_dt;
+	private String reg_dt;
 	
 	
 	
@@ -27,11 +27,11 @@ public class MemberVO {
 		this.alias = alias;
 	}
 
-	public Date getReg_dt() {
+	public String getReg_dt() {
 		return reg_dt;
 	}
 
-	public void setReg_dt(Date reg_dt) {
+	public void setReg_dt(String reg_dt) {
 		this.reg_dt = reg_dt;
 	}
 

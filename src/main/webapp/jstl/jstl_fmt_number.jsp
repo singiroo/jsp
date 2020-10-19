@@ -17,8 +17,9 @@
 	<%-- 숫자 ===> 문자 --%>	
 	price : ${price } <br>
 	price :  - type-number : <fmt:formatNumber value="${price }" type="number"/> <br>
-	price :  - type-percent : <fmt:formatNumber value="0.1" type="percent"/> <br>
 	<%-- value는 1이 100%의 개념으로 인식 --%>
+	price :  - type-percent : <fmt:formatNumber value="0.1" type="percent"/> <br>
+
 	price :  - type-currency : <fmt:formatNumber value="100000" type="currency"/> <br>
 	price - pattern <fmt:formatNumber value="${price }" pattern="00,0000.00"/> <br><br>
 	

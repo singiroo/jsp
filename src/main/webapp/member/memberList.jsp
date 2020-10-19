@@ -53,8 +53,8 @@
 				<td>${member.alias }</td>
 				<!-- format : yyyy-MM-dd -->
 				<td>
-					<fmt:formatDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/>	
-					<%-- <fmt:parseDate value="${member.reg_dt }" pattern="yyyy-MM-dd"/> --%>
+					<fmt:parseDate var="parsingDate" value="${member.reg_dt }" pattern="yyyy-MM-dd"/> 
+				 	<fmt:formatDate value="${parsingDate }" pattern="yyyy-MM-dd"/>
 				</td>
 				</tr>
 		

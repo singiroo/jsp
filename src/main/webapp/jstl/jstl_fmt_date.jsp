@@ -23,20 +23,14 @@
 	<%-- 문자 ==> 날짜 
 		"2020-10-19 10:15" 문자열을 날짜 타입으로 변경--%>
 	<% 
-		request.setAttribute("nowStr", "2020-10-19 10:15");
+		request.setAttribute("nowStr", "2020/10/19 20:08");
 	%>
 	
-	<fmt:parseDate value="${nowStr }" pattern="yyyy-MM-dd HH:mm"/>
-	
-	
-	
-	
-	
-	
-
-
-
-
+	<fmt:parseDate value="${nowStr }" pattern="yyyy/M/dd HH:ss" /><br><br>
+	<!-- String 날짜 자료를 순서대로 가져올때 pattern에 제시한 대로 가져옴 2020-10-19 10:15:13 의 문자열로 이루어진 날짜 데이터가 있다 가정하고
+	     parseDate 태그의 pattern 속성의 값을 "mmdd"로 하면 2020의 앞부분 20은 mm 즉, 분 데이터로 파싱하고, 뒷부분 20은 dd, 날짜 데이터로 파싱함
+	     날짜의 구분자가 들어갈 경우 구분자도 똑같이 pattern 속성에 작성해야 제대로 파싱을 함. 아니면 파싱 오류가 발생    -->
+	Sun Jan 19 00:10:00 KST 2020
 
 </body>
 </html>
