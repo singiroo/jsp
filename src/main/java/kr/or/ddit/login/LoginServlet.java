@@ -36,6 +36,8 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		logger.debug("loginServlet doGet");
+		logger.debug("UNT_CD parameter : {}", request.getParameter("UNT_CD"));
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 

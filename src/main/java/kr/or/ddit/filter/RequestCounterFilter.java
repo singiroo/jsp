@@ -64,7 +64,7 @@ public class RequestCounterFilter implements Filter {
 		
 		// ------------------------- 전처리 필터(요청) ------------------------------
 		
-		
+		logger.debug("RequestCounterFilter doFilter() 전처리");
 		
 		// 등록된 다른 필터로 요청 위임
 		// 만약 더 이상 등록된 필터가 없을 경우 서블릿이나 jsp로 요청을 전달
@@ -72,13 +72,8 @@ public class RequestCounterFilter implements Filter {
 		
 		// ------------------------ 후처리 필터(응답) -------------------------------
 		
-		
-		
-		
-		
-		
-		
-		
+		logger.debug("RequestCounterFilter doFilter() 후처리");
+
 	}
 
 	@Override
