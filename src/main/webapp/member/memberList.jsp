@@ -19,6 +19,21 @@
 
 <%@include file="/layout/commonLib.jsp" %>
 
+<script>
+	$(document).ready(function(){
+		$('tbody tr').on('click', function(){
+			//data-userId
+			var userid = $(this).data("userid");
+			console.log(userid);
+			console.log("tbody tr click!!");
+			console.log("userId : "+ userid);
+
+			document.location="/jsp/member?userId="+ userid;
+		});
+			
+	});
+		
+</script>
 </head>
 
 <body>
@@ -45,20 +60,22 @@
 					<th>사용자 이름</th>
 					<th>사용자 별명</th>
 					<th>등록일시</th>
-				</tr>
-			<c:forEach var="member" items="${map.memberList }">
-				<tr>
-				<td>${member.userId }</td>
-				<td>${member.userNm }</td>
-				<td>${member.alias }</td>
-				<!-- format : yyyy-MM-dd -->
-				<td>
-					<fmt:parseDate var="parsingDate" value="${member.reg_dt }" pattern="yyyy-MM-dd"/> 
-				 	<fmt:formatDate value="${parsingDate }" pattern="yyyy-MM-dd"/>
-				</td>
-				</tr>
-		
-			</c:forEach>
+				</tr>	
+			<tbody id="memberList">
+				<c:forEach var="member" items="${map.memberList }">
+					<tr data-userid="${member.userId }">
+					<td>${member.userId }</td>
+					<td>${member.userNm }</td>
+					<td>${member.alias }</td>
+					<!-- format : yyyy-MM-dd -->
+					<td>
+						<fmt:parseDate var="parsingDate" value="${member.reg_dt }" pattern="yyyy-MM-dd"/> 
+					 	<fmt:formatDate value="${parsingDate }" pattern="yyyy-MM-dd"/>
+					</td>
+					</tr>
+			
+				</c:forEach>			
+			</tbody>
 			</table>
 		</div>
 		memberList.size() : ${memberList.size() }<br>
