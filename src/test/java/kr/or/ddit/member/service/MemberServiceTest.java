@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,20 @@ import kr.or.ddit.member.model.MemberVO;
 public class MemberServiceTest {
 	private static final Logger logger = LoggerFactory.getLogger(MemberServiceTest.class);
 
+	
+	
+	MemberServiceI service;
+	
+	
+	@Before
+	public void setup() {
+		service = new  MemberService();
+		String userId = "kyh";
+		service.deleteMember(userId);
+	}
+		
+	
+	
 	@Test
 	public void getMemberTest() {
 		/***Given***/
@@ -102,6 +117,40 @@ public class MemberServiceTest {
 		
 	}
 	
+	@Test
+	public void insertMemberTest() {
+		
+		/***Given***/
+		MemberServiceI service = new MemberService();
+		MemberVO memberVo = new MemberVO("kyh", "김윤환", "java", "singiroo", "대전 중구 중앙로 76", 
+				"영민빌딩 404호", "34940", "d:\\profile\\kyh.png", "kyh.png");
+		
+
+		/***When***/
+		int insertCnt = service.insertMember(memberVo);
+
+		/***Then***/
+		assertEquals(1, insertCnt);
+		
+		
+		
+	}
+	
+	
+	@Test
+	public void updateMemberTest() {
+		/***Given***/
+		MemberServiceI service = new MemberService();
+		MemberVO memberVo = new MemberVO("cony", "코니", "java", "긴귀생물", "대전 유성구 궁동", 
+				"행복빌라 106호", "12346", "d:\\profile\\cony.png", "cony.png");
+		
+
+		/***When***/
+		int updateCnt = service.updateMember(memberVo);
+		
+		/***Then***/
+		assertEquals(1, updateCnt);
+	}
 	
 	
 }

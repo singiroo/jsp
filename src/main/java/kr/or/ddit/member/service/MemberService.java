@@ -66,6 +66,27 @@ public class MemberService implements MemberServiceI {
 	}
 
 
+	@Override
+	public int insertMember(MemberVO memberVo) {
+		int insertCnt = memberDao.insertMember(memberVo);
+		return insertCnt;
+	}
+
+
+	@Override
+	public int deleteMember(String userId) {
+		int deleteCnt = memberDao.deleteMember(userId);
+		return deleteCnt;
+	}
+
+
+	@Override
+	public int updateMember(MemberVO memberVo) {
+		int updateCnt = memberDao.updateMember(memberVo);
+		return updateCnt;
+	}
+
+
 	
 	
 

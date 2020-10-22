@@ -14,7 +14,23 @@ public class MemberVO {
 	private String realFileName;
 	private String fileName;
 	
+	public MemberVO() {
 	
+	}
+	
+
+	public MemberVO(String userId, String userNm, String pass, String alias, String addr1, String addr2, String zipcode,
+			String realFileName, String fileName) {
+		this.userId = userId;
+		this.userNm = userNm;
+		this.pass = pass;
+		this.alias = alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+		this.realFileName = realFileName;
+		this.fileName = fileName;
+	}
 
 	public String getRealFileName() {
 		return realFileName;

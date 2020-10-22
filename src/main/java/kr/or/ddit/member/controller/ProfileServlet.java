@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import kr.or.ddit.member.model.MemberVO;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
@@ -20,6 +23,7 @@ import kr.or.ddit.member.service.MemberServiceI;
 @WebServlet("/profileImg")
 public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = LoggerFactory.getLogger(ProfileServlet.class);
 	private MemberServiceI memberService;
 	
 	@Override
@@ -43,13 +47,17 @@ public class ProfileServlet extends HttpServlet {
 		String path = memberVo.getFileName();
 		String realPath = "D:\\profile\\"+memberVo.getRealFileName();
 		
+		logger.debug("path : {}",path);//파일 경로
+		logger.debug("realPath : {}", realPath);
+		
 		if(path.equals(realPath)) {
 			System.out.println("same!!!");
+		}else {
+			System.out.println("differ!");
 		}
 		
-		System.out.println("path:"+path);//파일 경로
 		
-		FileInputStream fis = new FileInputStream("D:\\profile\\"+memberVo.getRealFileName());
+		FileInputStream fis = new FileInputStream(memberVo.getFileName());
 		
 		ServletOutputStream sos = response.getOutputStream();
 		

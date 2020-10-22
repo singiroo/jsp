@@ -8,6 +8,10 @@ public class FileUploadUtil {
 	//반환해야하는 값 : sally.png
 	
 	//FileUploadUtilTest
+	
+	
+	
+	
 	public static String getFilename(String contentDisposition) {
 		String[] splitArr = contentDisposition.split("; ");
 		String result = "";
@@ -20,6 +24,18 @@ public class FileUploadUtil {
 		}
 		
 		return result;
+	}
+	//filename : sally.png ==> png
+	
+	public static String getExtension(String filename) {
+		String extension = "";
+		String[] fileStrArr = null;
+		
+		if(filename != null || filename.indexOf(".") != -1) {
+			extension = filename.substring(filename.lastIndexOf("."));
+		}
+		
+		return extension;
 	}
 	
 }

@@ -15,7 +15,12 @@ public interface MemberServiceI {
 	List<MemberVO> selectMemberPageList(PageVO pageVo);
 	
 	Map<String, Object> selectPagingComponent(PageVO pageVo);
+	
+	int insertMember(MemberVO memberVo);
+	
+	int deleteMember(String userId);
 
-
+	int updateMember(MemberVO memberVo);
+	
 	
 }
