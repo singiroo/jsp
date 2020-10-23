@@ -1,0 +1,8 @@
+1. 파일 업로드 ==> 파일 다운로드
+2. 파일 업로드시 filename 가져온 방법
+Content-Disposition 헤더에서 획득
+Content-Disposition : form-data; name="img"; filename="sally.png";
+
+
+
+
