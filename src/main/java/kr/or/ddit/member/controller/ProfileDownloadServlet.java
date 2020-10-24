@@ -34,11 +34,10 @@ public class ProfileDownloadServlet extends HttpServlet {
     
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//사용자 아이디 파라미터 확인하고
 		response.setContentType("application/octet-stream");
 		
+		//사용자 아이디 파라미터 확인하고
 		String userId = request.getParameter("userId");
-		System.out.println(userId);
 		//db에서 사용자 filename확인
 		MemberVO memberVo = memberService.getMember(userId);
 		response.setHeader("Content-Disposition", "attachment; filename=\"" + memberVo.getRealFileName()+"\"");
@@ -59,7 +58,13 @@ public class ProfileDownloadServlet extends HttpServlet {
 		}
 		
 		
+		
+		
+		//다운로드 : db에 저장된 파일이름으로 서버의 디스크로부터 버퍼 크기 만큼 읽어와 클라이언트(웹 브라우저)에게 전송 
+		
 		FileInputStream fis = new FileInputStream(memberVo.getFileName());
+		
+		
 		
 		ServletOutputStream sos = response.getOutputStream();
 		

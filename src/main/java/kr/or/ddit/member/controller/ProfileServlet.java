@@ -34,6 +34,12 @@ public class ProfileServlet extends HttpServlet {
     
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 사용자 아이디를 전송받아 db로 부터 사용자의 정보를 받아옴
+		// db에서 받아온 자료 중 프로필 이미지 파일의 파일 이름 정보와 파일 경로 정보를 이용하여 서버 디스크에 저장된 파일을 읽어서 클라이언트인 브라우저에 전송
+		// MIME 타입이 image 이므로 이미지 출력 결과가 됨.
+		
+		
 		//사용자 아이디 파라미터 확인하고
 		response.setContentType("image/png");
 		String userId = request.getParameter("userId");
