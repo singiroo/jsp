@@ -26,7 +26,6 @@ public class MybatisUtil {
 		
 	}
 	
-	
 	// sqlSessionFactory 객체를 통해 sqlSession객체를 얻어내는 메소드
 	public static SqlSession getSqlSession() {
 		return sqlSessionFactory.openSession();
