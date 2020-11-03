@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.board.model.BoardVO;
 
-
+//id="boardRepository"로 빈 등록
 @Repository("boardRepository")
 public class BoardRepository implements BoardRepositoryI {
 	

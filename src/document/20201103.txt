@@ -13,15 +13,15 @@ sql
 select 'hello, world'
 from dual;
 
-==> 언어마다 표기법이 다 다름.
+==> 언어마다 문자열 표기법이 다 다름.
 
 날짜 표현
 java
 java ==> Date 객체를 통해 표현,
 
 sql  
-sysdate ==> 함수, 오라클 서버의 현재 시간을 반환하는 오라클 내장 함수
 NLS 포맷에 정의된 형식을 따르지만 TO_DATE 함수를 사용을 권장(날짜 포맷 지정가능)
+sysdate ==> 함수, 오라클 서버의 현재 시간을 반환하는 오라클 내장 함수
 
 
 스프링 빈
@@ -57,6 +57,7 @@ NLS 포맷에 정의된 형식을 따르지만 TO_DATE 함수를 사용을 권�
 
 Spring MVC
 스프링 컨테이너의 부모-자식 관계 설정가능.
+
 객체의 상속과 동일한 원리
 부모 컨테이너에 등록된 스프링빈을 자식 컨테이너에서도 참조 가능.
 부모는 자식 컨테이너에 등록된 스프링 빈을 참조할 수 없음.
@@ -94,7 +95,7 @@ dispatcherServlet을 통해 생성
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>org.springframework....DispatcherServlet</servlet-class>
 		<init-param>
-			<param-name>contextConfiguration</param-name>
+			<param-name>contextConfigLocation</param-name>
 			<pram-value>설정파일위치1, 설정파일 위치2,...</param-value>
 		</init-param>
 	</servlet>
@@ -104,10 +105,19 @@ dispatcherServlet의 url-pattern에 따른 정상 처리 여부
 
 
 다시 하면서 정리할것..
-url-pattern					spring controller(/login/view.do)		mvc:default-servlet-handler			index.jsp		js/bootstrap.js
-	/*									X									미적용								X					X
-	/*									X									적용								O(정적자료)				O(js 코드 그대로)
-	*.do								O									미적용							O(jspservlet이 처리)					O(디폴트 서블릿(/)이 처리)
-	/									O									미적용							O						X
-	/									O									적용							O						O
+
+스프링 컨테이너는 정적자료와 jsp 처리를 할 수 없음.
+
+url-pattern	   mvc:default-servlet-handler				spring controller(/login/view.do)			index.jsp		js/bootstrap.js
+	/*				미적용										X(jsp처리를 못함)							X					    X
 	
+	/*				적용											X(정적자료로 처리)							X(정적자료로 처리)			O(js 코드 정적자료로)
+	
+	*.do			미적용/적용									O										O(jspservlet이 처리)		O(디폴트 서블릿(/)이 처리)
+	
+	/				미적용										O										O						X(디폴트 서블릿이 작동안함)
+	
+	/				적용											O										O						O
+	
+	
+

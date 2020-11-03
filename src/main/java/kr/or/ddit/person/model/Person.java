@@ -11,6 +11,8 @@ public class Person {
 	private int age;
 	private BoardRepositoryI boardRepository;
 	
+	//필드 마다 설정해줘야 하는 번거로움이 있지만
+	//필드 마다 패턴을 다르게 설정해 줄 수 있는 장점이 있다.
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthdate;
 	
@@ -69,6 +71,13 @@ public class Person {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Person [age=" + age + ", boardRepository=" + boardRepository + ", birthdate=" + birthdate + "]";
+	}
+	
+	
 	
 	
 

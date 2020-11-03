@@ -12,7 +12,10 @@
 	
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false" >
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
+
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어  
@@ -28,10 +31,22 @@
 	</bean>
 
 	<!-- @Controller, @RequestMapping, HandlerMapping, HandlerAdapter,
-	     formatting conversion service 등 ,validation
+	     formatting conversion service, validation 등
 	     spring mvc 패턴에 필요한 어노테이션, 엘리먼트 처리  -->
 	<mvc:annotation-driven/>
 	<!-- spring container 가 처리하지 못하는 요청을 서버에 등록된 디폴트 서블릿에 위임.  -->
 	<mvc:default-servlet-handler/>
+	
+	<!-- <bean id="memberDao" class="kr.or.ddit.member.dao.MemberDao">
+	
+	</bean>
+	
+	<bean id="memberService" class="kr.or.ddit.member.service.MemberService">
+		<property name="memberDao" ref="memberDao"/>
+	</bean> -->
+	
+	
+	
+	
 
 </beans>

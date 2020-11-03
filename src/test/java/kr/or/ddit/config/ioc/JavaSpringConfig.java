@@ -8,6 +8,7 @@ import kr.or.ddit.board.repository.BoardRepositoryI;
 import kr.or.ddit.board.service.BoardService;
 import kr.or.ddit.board.service.BoardServiceI;
 
+//xml이 아닌 java로 설정 정보 만들기
 @Configuration
 public class JavaSpringConfig {
 	
@@ -26,6 +27,9 @@ public class JavaSpringConfig {
 	//아래와 같이 직접 new 연산자를 통해 생성한 객체는 스프링 빈이 아니다.
 	//boardService.setBoardRepository(new BoardRepository());
 	//@Bean 어노테이션이 붙은 메소드를 호출해야 스프링 컨테이너에서 관리되는 스프링빈을 얻을 수 있다.
+//	<bean id="boardService" class="BoardService">
+//		<property name="boardRepository" ref="boardRepository">
+//	</bean>
 	@Bean
 	public BoardService boardService() {
 		BoardService boardService = new BoardService();

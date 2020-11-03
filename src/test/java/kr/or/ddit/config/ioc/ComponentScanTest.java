@@ -13,6 +13,7 @@ import kr.or.ddit.board.model.BoardVO;
 import kr.or.ddit.board.repository.BoardRepository;
 import kr.or.ddit.board.repository.BoardRepositoryI;
 import kr.or.ddit.board.service.BoardServiceI;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/ioc/component-scan.xml"})
 public class ComponentScanTest {

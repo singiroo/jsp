@@ -10,6 +10,7 @@ import kr.or.ddit.board.service.BoardServiceI;
 
 public class IocTest {
 	private static final Logger logger = LoggerFactory.getLogger(IocTest.class);
+	
 	public static void main(String[] args) {
 		//스프링 빈 사용설명서를 사용하여 스프링 컨테이너를 생성
 		//스프링 컨테이너로 : applicationContext
@@ -20,12 +21,15 @@ public class IocTest {
 		//스프링 컨테이너로부터 스프링 빈을 받아서 사용
 		
 		//컨테이너에게 원하는 스프링 빈을 요청하여 받는 과정 : (DL : Dependency Lookup)
+		//컨테이너에서 제공하는 api를 활용하여 저장소에 저장된 빈을 요청하여 스프링 빈을 검색하는 것 : DL : Depedency Lookup
 		
 		
-		//xml에서 bean의 name을 인자로 전달. 
+		//xml에서 bean의 name을 인자로 전달.
+		//두번째 인자로 타입을 전해 줄수 있다.
 		BoardService boardService = context.getBean("boardService", BoardService.class);
 		
 		if(boardService.getBoardRepository() != null) {
+			//getBean으로 bean 을 가져오는 지 확인.
 			System.out.println("boardRepository is not null");
 		}
 		

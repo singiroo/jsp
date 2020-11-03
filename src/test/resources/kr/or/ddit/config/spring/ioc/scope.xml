@@ -4,13 +4,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- scope 속성을 지정하지 않았으므로 singleton임.
-	     boardRepository라는 스프링 빈은 해당 스프링 컨테이너에서 유일.  -->
+	     boardRepository라는 스프링 빈은 해당 스프링 컨테이너에서 유일.  
+	     scope가 singleton일 때 식별자가 같은 스프링 빈은 모두 동일한 객체 -->
 	<bean id="boardRepository" class="kr.or.ddit.board.repository.BoardRepository" />
 	
-	<bean id="boardRepository_a" class="kr.or.ddit.board.repository.BoardRepository" />
+	<bean id="boardRepository_a" class="kr.or.ddit.board.repository.BoardRepository"  />
 	
 	<!-- BoardRepository class를 이용하여 boardRepository_p 스프링 빈을 prototype scope로 생성  -->
-	
+	<!-- scope가 prototype인 경우, 빈을 요청할 때마다 새로운 객체 생성하여 리턴. -->
 	<bean id="boardRepository_p" class="kr.or.ddit.board.repository.BoardRepository" scope="prototype" />
 	
 	

@@ -17,12 +17,14 @@
 				<entry key="name" value="brown"/>					
 			</map>
 		</property>
+		
 		<property name="properties">
 			<props>
 				<prop key="jdbc.user">sem</prop>
 				<prop key="jdbc.pass">java</prop>
 			</props>
 		</property>
+		
 		<property name="set">
 			<set>
 				<value>brown</value>

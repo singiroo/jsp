@@ -6,7 +6,7 @@ public class BoardVO {
 	private String title;
 	private String content;
 
-	//프레임워크에서 요구
+	//기본 생성자는 프레임워크에서 요구
 	public BoardVO() {
 	}
 	

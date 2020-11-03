@@ -20,6 +20,7 @@ import kr.or.ddit.board.repository.BoardRepositoryI;
 public class IocScopeTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(IocScopeTest.class);
+	
 	@Autowired
 	ApplicationContext context;
 	

@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 import kr.or.ddit.board.model.BoardVO;
 import kr.or.ddit.board.repository.BoardRepositoryI;
 
+//빈 등록
 // <bean id="boardService" />
 @Service("boardService")
 public class BoardService implements BoardServiceI {
 	
+	//빈 주입
+	//boardRepository 참조 변수에 boardRepository 빈을 주입.
 	@Resource(name = "boardRepository")
 	private BoardRepositoryI boardRepository;
 	

@@ -19,19 +19,20 @@ import kr.or.ddit.person.model.Person;
 
 //junit을 스프링 컨테이너에서 실행
 
-//실행할 main - 스프링에서 제공하는 runner
+//실행할 runner - 스프링에서 제공하는 runner
 @RunWith(SpringJUnit4ClassRunner.class)
+
 //빈의 조립 설명서 설정 - 설명서의 위치 지정
 @ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/ioc/ioc.xml"})
 public class IocDITest {
 	
-	
 	//ioc.xml을 바탕으로 스프링 빈이 잘 생성되었는지 확인
-	//setter - boardService, constructor-boardServiceC 주입 확인
+	//setter - boardService, 
+	//constructor-boardServiceC 주입 확인
 	
 	//DI 
 	//컨테이너를 얻어옴 ApplicationContext 객체를 만들어 주입
-	//@Autowired : 스프링 빈 중에 호환되는 타입의 빈이 있을 때 주입
+	//@Autowired : 스프링 빈 중에 호환되는 타입(spring framework spec)의 빈이 있을 때 주입
 	@Autowired
 	ApplicationContext context;
 	
