@@ -6,11 +6,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- base-package 속성에 설정된 패키지의 하위 패키지를 포함하여 모든 클래스를 스캔
-	     스캔된 클래스중에 @Controller, @Service, @Repository, @Component 어노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
+	     스캔된 클래스중에 @Controller, @Service, @Repository, @Component 어노테이션이 붙은 클래스를 스프링 빈으로 등록 
+	     annotation-config의 기능도 함.
+	     annotation-cofig 속성의 기본값이 true임-->
 	<context:component-scan base-package="kr.or.ddit" ></context:component-scan>
 	
 	<!-- @Resource, @Autowired, @Inject : 해당 어노테이션을 작업해주는 스프링 설정 파일이 있는데,
-	     BeanPostProcessor 라고 함.  -->
+	     BeanPostProcessor 라고 함. 
+	     별도로 처리
+	     빈 설정(xml)에서 의존성을 처리하지 않았을 때 스프링이 자동으로 처리하게끔 함.
+	     @Resource()어노테이션으로 주입할 빈은 설정하고 사용. -->
 	<!-- <context:annotation-config/> -->
 	
 
