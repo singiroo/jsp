@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- client from method : post
+	<!-- client side method : post
 	                 encType : multipart/form-data  
 	     server - servlet @MultipartConfig
 	     		- spring Framework : multipartResolver-->

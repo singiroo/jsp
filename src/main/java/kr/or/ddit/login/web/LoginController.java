@@ -40,6 +40,7 @@ public class LoginController {
 	//localhost/login/view 요청시 처리되는 메서드
 	
 	//값을 초기화 할 때 사용
+	//@RequestMapping 이 붙은 메서드가 실행되기 전에 반드시 실행
 	@ModelAttribute("rangers")
 	public List<String> ranger(){
 		logger.debug("ranger()");
@@ -60,8 +61,8 @@ public class LoginController {
 	}
 	
 	//파라미터 이름과 동일한 이름의 메소드 인자를 선언하면
-	//스프링 프레임워크가 자동으로 바인딩 해줌.
-	//값을 담을 수 있는 객체를 메서드 인자로 선언한 경우에도 필드명과 파라미터 명이
+	//스프링 프레임워크가 자동으로 바인딩 해줌. HandlerAdapter
+	//값을 담을 수 있는 객체(command 객체 == form 객체)를 메서드 인자로 선언한 경우에도 필드명과 파라미터 명이
 	//동일하면 자동으로 바인딩 처리를 해준다
 	//이 때 값을 담는 객체를 스프링 프레임워크에서는 command 객체(공식 용어는 아니나 암묵적인 약속?)라고 명명한다.
 	
@@ -69,9 +70,11 @@ public class LoginController {
 	//Model : view객체에서 응답을 생성할 때 참조할 데이터를 담는 객체
 	//		  jsp/servlet 기반의 request 객체 역할을 담당.
 	//command 객체는 자동으로 model에 들어감.
+	//userId 파라미터가 존재할 때 요청을 처리
 	@RequestMapping(path = "/process", params = {"userId"})
 	public String process(String userId, String pass, MemberVO memberVo, 
 							HttpSession session, Model model,
+							//required = false : 필수 옵션을 off, 없으면 null처리 or default 처리
 							@RequestParam(name = "email", required = false, defaultValue = "brown@naver.com") String user_id) {
 		
 		logger.debug("LoginController process {},{},{}: ---------------",userId, pass, memberVo);
@@ -111,9 +114,12 @@ public class LoginController {
 		ModelAndView mav = new ModelAndView();
 		
 		logger.debug("mavView rangers : {}", rangers);
+		//model에 없는 객체를 바인딩했을 경우 객체가 null이 아닌 빈 객체가 만들어짐.
+		logger.debug("mavView memberVo : {}", memberVo);
 		
 		//viewName 설정
-		mav.setViewName("main");
+		//viewName대로 응답이 생성됨.
+		mav.setViewName("login/view");
 		
 		mav.getModel().put("msg", "success");
 		mav.getModelMap().addAttribute("msg", "fail");

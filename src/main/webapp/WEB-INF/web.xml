@@ -12,10 +12,11 @@
   
   <!-- 스프링 부모 컨테이너 생성 : service, repository 등록  -->
   <context-param>
+  	<!-- 해당 param-name 은 스프링 프레임워크에서 정한 약속.  -->
   	<param-name>contextConfigLocation</param-name>
   	<param-value>classpath:kr/or/ddit/config/spring/root-context.xml</param-value>
   </context-param>
-
+	
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

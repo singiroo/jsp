@@ -35,7 +35,7 @@ public class FileUploadControllerTest extends WebTestConfig {
 		mockMvc.perform(get("/fileupload/view"))
 				.andExpect(status().is(200))
 				.andExpect(view().name("/fileupload/fileupload"))
-				//진행 정보를 콘솔에 출력
+				//테스트 진행 정보를 콘솔에 출력
 				.andDo(print());
 
 		/***When***/
@@ -46,9 +46,12 @@ public class FileUploadControllerTest extends WebTestConfig {
 	@Test
 	public void uploadTest() throws Exception {
 		//String name, String originFilename, String contentType, byte[] content
+		//왜 절대경로만 인식하는가?
 		InputStream is = getClass().getResourceAsStream("/kr/or/ddit/upload/sally.png");
+		
 //		FileInputStream fis = 
 //				new FileInputStream("D:\\A_TeachingMaterial\\6.JspSpring\\workspace\\spring\\src\\test\\resources\\kr\\or\\ddit\\upload\\sally.png");
+		//input 태그에서 파일 선택한 상황을 만듬.
 		MockMultipartFile file = new MockMultipartFile("file", "sally.png", "image/png", is);
 		
 		mockMvc.perform(fileUpload("/fileupload/upload")

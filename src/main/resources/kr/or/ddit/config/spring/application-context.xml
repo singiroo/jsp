@@ -13,11 +13,21 @@
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false" >
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+	
+	<!-- 방법 2. 빈을 직접 등록.  -->
+	<!-- <bean id="memberDao" class="kr.or.ddit.member.dao.MemberDao">
+	
+	</bean>
+	
+	<bean id="memberService" class="kr.or.ddit.member.service.MemberService">
+		<property name="memberDao" ref="memberDao"/>
+	</bean> -->
+	
 
-
+	<!-- jsp를 처리해줄 view를 지정할 InternalResourceViewResolver  -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어  
-			Controller 가 리턴하는 문자열에 prefix와 suffix를 적용하여 해당 경로의 파일로 응답을 생성
+			Controller 가 리턴하는 문자열(viewName)에 prefix와 suffix를 적용하여 해당 경로의 파일로 응답을 생성
 			LoginController.getView() ==> "login/view"
 			
 			prefix				viewName		suffix
@@ -31,24 +41,14 @@
 
 	<!-- @Controller, @RequestMapping, HandlerMapping, HandlerAdapter,
 	     formatting conversion service, validation 등
-	     spring mvc 패턴에 필요한 어노테이션, 엘리먼트 처리  -->
+	     spring mvc 패턴에 필요한 어노테이션, 엘리먼트 활성화  -->
 	<mvc:annotation-driven/>
+	
 	<!-- spring container 가 처리하지 못하는 요청을 서버에 등록된 디폴트 서블릿에 위임.  -->
 	<mvc:default-servlet-handler/>
 	
-	<!-- <bean id="memberDao" class="kr.or.ddit.member.dao.MemberDao">
-	
-	</bean>
-	
-	<bean id="memberService" class="kr.or.ddit.member.service.MemberService">
-		<property name="memberDao" ref="memberDao"/>
-	</bean> -->
-	
-	<!-- 파일 업로드 처리를 위한 multipartResolver 설정  -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	
-	</bean>
-	
+	<!-- 파일 업로드 처리를 위한 multipartResolver 등록  -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>	
 	
 
 </beans>

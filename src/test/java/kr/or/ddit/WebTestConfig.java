@@ -29,6 +29,7 @@ public class WebTestConfig {
 		
 		//LoginController 스프링 빈을 생성하기 위해서는 MemberService, MemberDao 스프링 빈이 필요함.
 		// 즉, service, repository 빈을 스캔하는 설정과 controller 빈을 스캔하는 설정 두 개 모두 필요함.
+		// 그래서 root-context.xml, application-context.xml 모두 등록
 		
 		//스프링 프레임워크의 컨트롤러 테스트 시나리오
 		//1. 웹 기반의 스프링 컨테이너를 구성후
@@ -57,8 +58,8 @@ public class WebTestConfig {
 		//param(파라미터명, 파라미터값) : 요청시 보낼 파라미터
 
 		//status() : 스프링 프레임워크에 의해 요청이 처리되고 생성된 응답 코드
-		//view() : 스프링 프레임워크에 의해 요청이 처리되는 과정에서 반환된 viewname
-		//model() : 컨트롤러에서 설정한 속성값을 담는 객체
+		//view() : 스프링 프레임워크에 의해 요청이 처리되는 과정에서 반환된 view객체  name
+		//model() : 컨트롤러에서 설정한 속성값을 담는 객체 servlet의 request 같은..
 		//request() : 요청 객체 얻어옴
 
 	
