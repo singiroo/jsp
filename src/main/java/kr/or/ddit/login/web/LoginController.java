@@ -128,4 +128,10 @@ public class LoginController {
 		return mav;
 	}
 	
+	@RequestMapping("/main")
+	public String mainView() {
+		return "main";
+	}
+	
+	
 }
