@@ -14,8 +14,12 @@
   <context-param>
   	<!-- 해당 param-name 은 스프링 프레임워크에서 정한 약속.  -->
   	<param-name>contextConfigLocation</param-name>
+  	<!-- 컨테이너의 설정 정보  -->
   	<param-value>classpath:kr/or/ddit/config/spring/root-context.xml</param-value>
   </context-param>
+	
+  <!-- 컨테이너의 설정 정보를 참조할 수 있는 약속된 이름으로 전역 파라미터로 등록 시킨후 리스너를 등록 시켜 컨텍스트가 로드될 때 빈을 등록시킨다.
+       서버 구동시 등록됨. 따라서 모든 컨텍스트의 부모?  -->
 	
   <listener>
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -23,6 +27,7 @@
   
   
   <!-- 자식 컨테이너 설정 - DispatcherServlet를 통해서 : controller 등록  -->
+  <!-- 스프링 프레임워크에서는 모든 요청을 dispatcherServlet이 받는데 모든 컨트롤러의 선봉에서 다른 컨트롤러를 지시하기 때문에 Front Controller라고도 함.  -->
   <servlet>
    	<servlet-name>dispatcherServlet</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
