@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +112,9 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="userNm" name="userNm"
 								placeholder="사용자 이름" value="${param.userNm }">
+								<!-- 해당 하는 객체에 필드가 있으면 출력하고 없으면 그냥 넘어감.
+								     path 속성에 클래스 명을 앞글자만 소문자로  -->
+								<span style="color:red;"><form:errors path="memberVO.userNm"/></span>
 						</div>
 					</div>
 					<div class="form-group">

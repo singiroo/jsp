@@ -8,11 +8,13 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,7 +25,9 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import kr.or.ddit.common.model.PageVO;
 import kr.or.ddit.fileupload.util.FileUploadUtil;
+import kr.or.ddit.member.model.JSRMemberVO;
 import kr.or.ddit.member.model.MemberVO;
+import kr.or.ddit.member.model.MemberVOValidator;
 import kr.or.ddit.member.service.MemberServiceI;
 
 @RequestMapping("/member")
@@ -56,7 +60,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
-	public String registMember(MemberVO memberVo, @RequestPart("realFileNames") MultipartFile file) throws IllegalStateException, IOException {
+	public String registMember(@Valid MemberVO memberVo, BindingResult br, @RequestPart("realFileNames") MultipartFile file) throws IllegalStateException, IOException {
+		
+//		new MemberVOValidator().validate(memberVo, br);
+//		
+		if(br.hasErrors()) {
+			return "member/memberRegist";
+		}
+		
 		if(file.getSize() > 0) {
 			String extension = FileUploadUtil.getExtension(file.getOriginalFilename());
 			String filename = UUID.randomUUID().toString();

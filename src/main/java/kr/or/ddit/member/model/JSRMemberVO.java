@@ -4,13 +4,12 @@ import java.sql.Date;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-public class MemberVO {
-	private String userId;
+public class JSRMemberVO {
 	
+	private String userId;
 	//null이면 안되고, empty면 안됨
 	@NotEmpty
 	private String userNm;
-	
 	private String pass;
 	private String alias;
 	private String reg_dt;
@@ -20,12 +19,12 @@ public class MemberVO {
 	private String realFileName;
 	private String fileName;
 	
-	public MemberVO() {
+	public JSRMemberVO() {
 	
 	}
 	
 
-	public MemberVO(String userId, String userNm, String pass, String alias, String addr1, String addr2, String zipcode,
+	public JSRMemberVO(String userId, String userNm, String pass, String alias, String addr1, String addr2, String zipcode,
 			String realFileName, String fileName) {
 		this.userId = userId;
 		this.userNm = userNm;
@@ -143,7 +142,7 @@ public class MemberVO {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MemberVO other = (MemberVO) obj;
+		JSRMemberVO other = (JSRMemberVO) obj;
 		if (addr1 == null) {
 			if (other.addr1 != null)
 				return false;
