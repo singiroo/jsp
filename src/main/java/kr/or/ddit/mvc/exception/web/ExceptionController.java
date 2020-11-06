@@ -12,6 +12,8 @@ import kr.or.ddit.mvc.exception.NoFileException;
 public class ExceptionController {
 	private static final Logger logger = LoggerFactory.getLogger(ExceptionController.class);
 	
+	
+	//localhost/exception/view로 url 요청시 ArithmeticException을 발생시킴.
 	@RequestMapping("/exception/view")
 	public String view() {
 		logger.debug("ExceptionController.view()");
@@ -19,6 +21,11 @@ public class ExceptionController {
 //		return "";
 	}
 	
+	
+	//localhost/exception/resSt로 요청시
+	//이 메소드가 호출되면 내부적으로 사용자가 만든 NoFileException을 발생시킴
+	//NoFileException이 404코드로 응답 처리
+	//404 코드에 대해서 응답처리해줄 페이지가 필요하면 web.xml등록하거나  NoFileException에 메서드를 정의하여 메서드로 처리
 	@RequestMapping("/exception/respSt")
 	public String responseStatus() throws NoFileException {
 		try {
@@ -39,13 +46,15 @@ public class ExceptionController {
 //		return "";
 	}
 	
-	
-//	@ExceptionHandler({ArithmeticException.class})
-//	public String handler() {
-//		logger.debug("ExceptionController.hadler()");
-//		
-//		//에러를 처리할 화면
-//		return "exception/arithmetic";
-//	}
+	//이 컨트롤러에서 exception 처리를 담당.
+	// 이 컨트롤러에서 메서드가 예외를 발생시킬시 @ExceptionHandler 메서드가 호출되어 예외처리함.
+	// 컨트롤러 내에서 정의한 ExceptionHandler가 우선적으로 호출됨.
+	@ExceptionHandler({ArithmeticException.class})
+	public String handler() {
+		logger.debug("ExceptionController.hadler()");
+		
+		//에러를 처리할 화면
+		return "exception/arithmetic";
+	}
 	
 }

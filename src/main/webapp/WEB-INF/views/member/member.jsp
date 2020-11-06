@@ -20,7 +20,7 @@
 <script>
 	$(document).ready(function(){
 		$('#profileDownBtn').on('click', function(){
-			document.location = "${cp}/member/profileDownload?userId=${memberVo.userId}";
+			document.location = "${cp}/profileDownload?userId=${memberVo.userId}";
 		});
 	});
 		
@@ -59,7 +59,7 @@
 						<div class="col-sm-10">
 							<%-- <img src="${cp }/profile/${memberVo.fileName}"/> --%>
 							
-							<img src="${cp}/member/profileImg?userId=${memberVo.userId}"/><br>
+							<img src="${cp}	/profileImgView?userId=${memberVo.userId}"/><br>
 							<button id="profileDownBtn" type="button" 
 							class="btn btn-default">다운로드: ${memberVo.realFileName }</button>
 						</div>

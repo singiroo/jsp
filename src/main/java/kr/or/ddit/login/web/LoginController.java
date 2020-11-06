@@ -53,6 +53,29 @@ public class LoginController {
 		return rangers;
 	}
 	
+	// http://localhost/login/json 요청시
+	// ranger() ==> Model 객체에 rangers라는 속성이 저장됨 ==> json()
+	// Model객체 속성이 존재(rangers)
+	@RequestMapping("/json")
+	public String json(Model model) {
+		
+
+//		List<String> rangerList = (List<String>)model.asMap().get("rangers");
+//		logger.debug("rangerList : {}", rangerList);
+		
+		return "jsonView";		//<bean id="jsonView" class="MappingJackson2JsonView"/>
+								//view resolver를 두개 등록함
+								// 1. beanNameViewResolver
+								//    viewName해당하는 빈이 있는지 찾음
+								//    만약 해당하는 빈(View)이 있으면 해당 view결과를 생성
+								//    beanNameViewResolver에서 찾지 못했을 경우
+								// 2. internalResourceViewResolver
+								//	  prefix, suffix 설정에 따라 /WEB-INF/views/jsonView.jsp
+								//	  internalResourceViewResolver는 view이름에 해당하는 자원이 존재하는지, 존재하지 않는지 체크하지 않고 무조건 forwarding
+								//    ** viewResolver 우선순위를 가장 후순위로 미뤄야함.
+	}
+	
+	
 	
 	//요청 메소드가 GET일 때만 처리하라.
 	@RequestMapping(path = "/view", method = {RequestMethod.GET} )

@@ -14,10 +14,11 @@
 	</context:component-scan>
 
 	<!-- messageSource 등록 : bean id는 messageSource로 정해져있다.
-	     번들메세지_언어코드_국가코드.properties ==> 번들메세지만 기술.  
+	     basenames property 설정시
+	    	 번들메세지_언어코드_국가코드.properties ==> 번들메세지만 기술.  
 	  -->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		<property name="basenames">
+		<property name="basenames">		
 			<list>
 				<value>classpath:kr/or/ddit/message/msg</value>	
 			</list>

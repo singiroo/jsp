@@ -24,7 +24,20 @@
 		<property name="memberDao" ref="memberDao"/>
 	</bean> -->
 	
-
+	<!-- ===============================================================================================================  -->
+	<!-- view 관련 bean들..  -->
+	
+	<bean id="downloadView" class="kr.or.ddit.mvc.view.DownloadView"/>
+	
+	<bean id="profileImgView" class="kr.or.ddit.mvc.view.ProfileImgView"/>
+	
+	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+	
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<!-- 우선순위 설정  -->
+		<property name="order" value="0"/>
+	</bean>
+	
 	<!-- jsp를 처리해줄 view를 지정할 InternalResourceViewResolver  -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어  
@@ -35,11 +48,15 @@
 			"/WEB-INF/views/" + "login/view" + ".jsp"
 			==>"/WEB-INF/views/login/view.jsp"
 		-->
+		<property name="order" value="1"/>
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 	
 
+	<!-- ===============================================================================================================  -->
+	
+		
 	<!-- @Controller, @RequestMapping, HandlerMapping, HandlerAdapter,
 	     formatting conversion service, validation 등
 	     spring mvc 패턴에 필요한 어노테이션, 엘리먼트 활성화, 처리  -->
@@ -51,13 +68,24 @@
 	<!-- 파일 업로드 처리를 위한 multipartResolver 등록  -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>	
 	
+	
+	
+	
+	
+	
+	
 	<!-- 정적자원 매핑 처리  
 			1. URL 단축을 목적
 			2. WEB-INF : 외부에서 접근불가능한 공간에 저장된 자원들 접근 매핑-->
 			
-	<!-- localhost/resources/style.css  
-	요청이 mapping 속성과 같이 들어오면 location에서 검색-->
+	<!--에러페이지로 등록해놓은 404.html과 500.html이 정적자원을 요구하는데 이것이 WEB-INF에 있어 외부에서 접근이 불가능하므로 가상 경로를 설정하여 매핑처리   
+		localhost/resources/style.css  
+		요청이 mapping 속성과 같이 들어오면 location에서 검색-->
+	<!-- /** : 빌드 도구의 하나인 ant 툴에서 쓰는 마스킹 문자로 모든세그먼트를 뜻함.  -->
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/"/>
 	
-	<mvc:resources mapping="/resources/**" location="/WEB-INF/views/exception"></mvc:resources>
-
+	
+	 
+	
+	
 </beans>

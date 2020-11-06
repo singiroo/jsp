@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	예외 처리 화면
 	arithmetic.jsp
 	
 </body>
