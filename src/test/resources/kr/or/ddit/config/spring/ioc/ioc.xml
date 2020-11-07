@@ -23,7 +23,7 @@
 	     				
 	    <bean id="boardRepository" class="kr.or.ddit.board.repository.BoardRepository"/>
 		
-		<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
+		<bean id="boardService" class="kr.or.ddit.board.service.BoardService" >
 			<!-- boardService가 의존하는 boardDao 스프링빈을 setter 메소드를 통해 주입(Dependency Injection)  -->
 			<property name="boardRepository" ref="boardRepository"/>
 			<!-- name : boardRepository => 호출할 setter의 이름
