@@ -51,12 +51,12 @@ public class MemberController {
 		model.addAttribute("map", map);
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("totalPage", map.get("totalPage"));
-		return "member/memberList";
+		return "tiles/member/memberListContent";
 	}
 	
 	@RequestMapping("/registView")
 	public String registView() {
-		return "member/memberRegist";
+		return "tiles/member/memberRegistContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
@@ -65,7 +65,7 @@ public class MemberController {
 //		new MemberVOValidator().validate(memberVo, br);
 //		
 		if(br.hasErrors()) {
-			return "member/memberRegist";
+			return "tiles/member/memberRegistContent";
 		}
 		
 		if(file.getSize() > 0) {
@@ -91,7 +91,7 @@ public class MemberController {
 		logger.debug("memberView : {}", memberVo);		
 		memberVo = memberService.getMember(memberVo.getUserId());
 		model.addAttribute("memberVo", memberVo);
-		return "member/member";
+		return "tiles/member/memberContent";
 	}
 	
 	@RequestMapping("/profileImg")
@@ -103,7 +103,7 @@ public class MemberController {
 	public String updateView(MemberVO memberVo, Model model) {
 		memberVo = memberService.getMember(memberVo.getUserId());
 		model.addAttribute("memberVo", memberVo);
-		return "member/memberUpdate";
+		return "tiles/member/memberUpdateContent";
 	}
 	
 	@RequestMapping(path="/update", method={RequestMethod.POST})
