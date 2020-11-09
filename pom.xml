@@ -124,7 +124,7 @@
 			<version>2.11.3</version>
 		</dependency>
 
-
+		<!-- 엑셀 변환 apache poi library -->
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>
@@ -139,7 +139,7 @@
 			<version>4.1.2</version>
 		</dependency>
 
-		<!-- tiles -->
+		<!-- 레이아웃 템플릿 : apache tiles library -->
 
 		<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
 		<dependency>

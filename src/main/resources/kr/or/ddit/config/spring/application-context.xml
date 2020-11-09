@@ -28,7 +28,7 @@
 	<!-- view 관련 bean들..  -->
 	
 	
-	<!-- view -->
+	<!-- view 등록 -->
 	<bean id="excelView" class="kr.or.ddit.mvc.view.ExcelDownloadView"/>
 	
 	<bean id="downloadView" class="kr.or.ddit.mvc.view.DownloadView"/>

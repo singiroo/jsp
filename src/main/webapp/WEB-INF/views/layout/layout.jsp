@@ -15,7 +15,7 @@
 
 <title>Jsp</title>
 
-<%@include file="/WEB-INF/views/layout/commonLib.jsp"%>
+<tiles:insertAttribute name="commonLib"/>
 
 </head>
 

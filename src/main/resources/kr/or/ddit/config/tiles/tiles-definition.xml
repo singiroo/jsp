@@ -9,7 +9,9 @@
 	 -->
 	<definition name="basic.layout" template="/WEB-INF/views/layout/layout.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp"/>
+		<put-attribute name="commonLib" value="/WEB-INF/views/layout/commonLib.jsp"/>
 		<put-attribute name="left" value="/WEB-INF/views/layout/left.jsp"/>
+		<!-- 페이지 마다 내용이 달라짐. 오버라이드해서 사용  -->
 		<put-attribute name="content" value=""/>
 		
 	</definition>
@@ -22,15 +24,24 @@
 	     tiles.member.member
 	     tiles.member.regist
 	     tiles.member.update
-	     
+	     tiles.*.*
+	     {1} : 첫번째 세그먼트
+	     {2} : 두번째 세그먼트
+	     * : 세그먼트
 	       -->
-	       <!-- tiles/member/memberListContent  -->
+	       
 	       <!-- 리스트
 	            상세조회
 	            등록
 	            수정
 	            타일즈 사용가능하게..  -->
-	<definition name="tiles/*/*" extends="basic.layout">	
+	            
+	       <!-- tiles/member/memberListContent 리턴시  -->
+	<definition name="tiles/*/*" extends="basic.layout">
+	<!-- /WEB-INF/views/member/memberListContent.jsp 
+			{1} : member
+			{2} : memberListContent 
+			바인드 변수와 유사하게 작용.-->	
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	

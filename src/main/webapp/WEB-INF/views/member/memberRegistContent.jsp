@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -33,9 +32,6 @@
 		});
 
 		//initData();
-
-
-		
 	});
 
 	function initData(){
@@ -46,8 +42,6 @@
 		$('#addr1').val('대전 중구 중앙로 76');
 		$('#addr2').val('영민빌딩 4층 404호');
 		$('#zipcode').val("34904");
-
-
 	}
 
 

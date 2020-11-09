@@ -9,9 +9,6 @@
 			document.location = "${cp}/profileDownload?userId=${memberVo.userId}";
 		});
 	});
-		
-
-
 </script>
 
 		tiles : memberContent.jsp

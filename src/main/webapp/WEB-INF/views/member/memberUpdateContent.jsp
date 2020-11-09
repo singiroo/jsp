@@ -31,9 +31,6 @@
 		});
 
 		//initData();
-
-
-		
 	});
 
 	function initData(){
@@ -44,8 +41,6 @@
 		$('#addr1').val('대전 중구 중앙로 76');
 		$('#addr2').val('영민빌딩 4층 404호');
 		$('#zipcode').val("34904");
-
-
 	}
 
 
