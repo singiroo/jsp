@@ -27,6 +27,8 @@
 	<!-- ===============================================================================================================  -->
 	<!-- view 관련 bean들..  -->
 	
+	<bean id="excelView" class="kr.or.ddit.mvc.view.ExcelDownloadView"/>
+	
 	<bean id="downloadView" class="kr.or.ddit.mvc.view.DownloadView"/>
 	
 	<bean id="profileImgView" class="kr.or.ddit.mvc.view.ProfileImgView"/>

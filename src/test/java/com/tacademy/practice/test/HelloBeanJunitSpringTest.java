@@ -35,6 +35,7 @@ public class HelloBeanJunitSpringTest {
 	
 
 	@Test
+	
 	public void test1() {
 
 		Hello hello = (Hello) context.getBean("hello2");

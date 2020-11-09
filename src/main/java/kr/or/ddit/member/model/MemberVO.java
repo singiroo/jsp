@@ -38,6 +38,12 @@ public class MemberVO {
 		this.fileName = fileName;
 	}
 
+	public MemberVO(String userid, String usernm) {
+		this.userId = userid;
+		this.userNm = usernm;
+	}
+
+
 	public String getRealFileName() {
 		return realFileName;
 	}
