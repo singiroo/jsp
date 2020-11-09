@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,10 +99,12 @@ public class LoginController {
 	@RequestMapping(path = "/process", params = {"userId"})
 	public String process(String userId, String pass, MemberVO memberVo, 
 							HttpSession session, Model model,
+							@RequestBody String body,
 							//required = false : 필수 옵션을 off, 없으면 null처리 or default 처리
 							@RequestParam(name = "email", required = false, defaultValue = "brown@naver.com") String user_id) {
 		
 		logger.debug("LoginController process {},{},{}: ---------------",userId, pass, memberVo);
+		logger.debug("body : {}", body);
 		
 		MemberVO dbMember = memberService.getMember(userId);
 		
