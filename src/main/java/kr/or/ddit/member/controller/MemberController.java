@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -52,6 +53,37 @@ public class MemberController {
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("totalPage", map.get("totalPage"));
 		return "tiles/member/memberListContent";
+	}
+	
+	//2020.11.10
+	@RequestMapping("/listAjaxPage")
+	public String listAjaxPage() {
+		return "tiles/member/listAjaxPage";
+	}
+	
+	//페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjax")
+	public String listAjax(PageVO pageVo, Model model) {
+		logger.debug("pageVo : {}", pageVo);
+		
+		Map<String, Object> map = memberService.selectPagingComponent(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("totalPage", map.get("totalPage"));
+		model.addAttribute("pageVo", pageVo);
+		return "jsonView";
+	}
+	
+	@RequestMapping("/listAjaxHTML")
+	public String listAjaxHTML(PageVO pageVo, Model model) {
+		logger.debug("ajax html pageVo : {}", pageVo);
+		
+		Map<String, Object> map = memberService.selectPagingComponent(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("totalPage", map.get("totalPage"));
+		model.addAttribute("pageVo", pageVo);
+		
+		//응답을 HTML ==> jsp로 생성
+		return "member/listAjaxHTML";
 	}
 	
 	@RequestMapping("/registView")
@@ -93,6 +125,21 @@ public class MemberController {
 		model.addAttribute("memberVo", memberVo);
 		return "tiles/member/memberContent";
 	}
+
+	@RequestMapping("/memberAjaxPage")
+	public String listAjaxPage(String userId, Model model) {
+		model.addAttribute("userId", userId);
+		return "tiles/member/memberAjaxPage";
+	}
+	
+	@RequestMapping("/memberAjaxHTML")
+	public String memberViewAjax(Model model, MemberVO memberVo) {
+		logger.debug("memberAjaxHTML memberVo : {}", memberVo);
+		memberVo = memberService.getMember(memberVo.getUserId());
+		model.addAttribute("memberVo", memberVo);
+		return "jsonView";
+	}
+	
 	
 	@RequestMapping("/profileImg")
 	public String profileImg(String userId) {
