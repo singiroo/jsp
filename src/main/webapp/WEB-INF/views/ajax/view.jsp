@@ -41,7 +41,8 @@
 					method : 'post',
 					dataType : $('#dataType').val(), 		//서버로부터 받기 희망하는 데이터 타입
 					success : function(data){ // xml로 옴. stringify 때문에 값이 찍히지는 않음.
-						//console.log(data);
+						console.log(JSON.stringify(data));
+						console.log((new XMLSerializer()).serializeToString(data));
 						$('#respJsonString').html("");
 
 						if($('#dataType').val() == 'json'){

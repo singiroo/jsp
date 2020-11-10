@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- advice : 부가 기능을 담고 있는 모듈  -->
+	<!-- <bean id="profilingAdvice" class="kr.or.ddit.aop.ProfilingAdvice"/> -->
+	
+	<!-- aop  -->
+	<!-- aspect = advice + pointcut
+	<aop:config>
+		pointcut : Advice 적용할 메소드 식별 정의, advice를 적용할 joinPoint 필터링 조건 
+		[service 패키지의 모든 클래스의 모든 메소드에 대하여] 
+		<aop:pointcut expression="execution(* kr.or.ddit..service.*.*(..))" id="target"/>
+		<aop:aspect ref="profilingAdvice">
+			<aop:before method="beforeMethod" pointcut-ref="target"/>
+			<aop:around method="aroundMethod" pointcut-ref="target"/>
+		</aop:aspect>
+	</aop:config>
+ -->
+ 	<!-- 어노테이션으로 aop 설정  -->
+ 	<!-- @Aspect를 부여한 클래스에 대한 설정 처리 
+ 		: Aspect 어노테이션 붙은 클래스에 대하여 자동으로 위빙. -->
+ 	<aop:aspectj-autoproxy/>
+ 	
+ 	<!-- @Aspect 적용된 클래스 스캐닝  -->
+ 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+ 		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+ 	</context:component-scan>
+ 
+</beans>

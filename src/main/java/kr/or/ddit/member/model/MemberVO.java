@@ -116,12 +116,15 @@ public class MemberVO {
 	}
 	
 	public String getFmt_reg_dt() {
-		if(reg_dt == null) {
-			return "";
-		}
-		else {
-			return new SimpleDateFormat("yyyy-MM-dd").format(reg_dt);			
-		}
+		
+		return reg_dt == null ? "" : new SimpleDateFormat("yyyy-MM-dd").format(reg_dt);
+		
+//		if(reg_dt == null) {
+//			return "";
+//		}
+//		else {
+//			return new SimpleDateFormat("yyyy-MM-dd").format(reg_dt);			
+//		}
 		
 	}
 

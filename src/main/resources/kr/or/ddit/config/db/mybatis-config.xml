@@ -7,11 +7,12 @@
 	<settings>
 		<setting name="jdbcTypeForNull" value="NULL" />
 	</settings>
+	
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVO"/>
 		<typeAlias type="kr.or.ddit.common.model.PageVO" alias="PageVO"/>
 	</typeAliases>
-  <environments default="development">
+<!--   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
@@ -22,8 +23,8 @@
       </dataSource>
     </environment>
   </environments>
-  <mappers>
-    <mapper resource="kr/or/ddit/config/db/mapper/member.xml"/>
-    
+ -->  
+ <mappers>
+    <mapper resource="kr/or/ddit/config/db/mapper/member.xml"/>   
   </mappers>
 </configuration>
