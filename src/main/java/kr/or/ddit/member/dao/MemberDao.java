@@ -74,25 +74,20 @@ public class MemberDao implements MemberDaoI {
 
 	@Override
 	public int insertMember(MemberVO memberVo) {
-		int insertCnt = 0; 
-				
-		try {
-			insertCnt = sqlSession.insert("member.insertMember", memberVo);
-			
-		}catch(Exception e) {
-			
-		}
+//		int insertCnt = 0; 
+//			
+//		insertCnt = sqlSession.insert("member.insertMember", memberVo);
+//			
+//		if(insertCnt == 1) {
+//			//sqlSession.commit();
+//		}
+//		else {
+//			//sqlSession.rollback();
+//		}
+//		
+//		//sqlSession.close();
 		
-		if(insertCnt == 1) {
-			//sqlSession.commit();
-		}
-		else {
-			//sqlSession.rollback();
-		}
-		
-		//sqlSession.close();
-		
-		return insertCnt;
+		return sqlSession.insert("member.insertMember", memberVo);
 	}
 
 	@Override

@@ -11,17 +11,13 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import kr.or.ddit.ModelTestConfig;
 import kr.or.ddit.WebTestConfig;
 import kr.or.ddit.member.dao.MemberDaoI;
 import kr.or.ddit.member.model.MemberVO;
 
-//repository + service : root-context.xml
-//sqlSessionTemplate : datasource-context.xml
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:kr/or/ddit/config/spring/root-context.xml",
-								   "classpath:kr/or/ddit/config/spring/datasource-context.xml"})
 
-public class MemberDaoTest {
+public class MemberDaoTest extends ModelTestConfig {
 	
 	@Resource(name="memberDao")
 	private MemberDaoI memberDao;
