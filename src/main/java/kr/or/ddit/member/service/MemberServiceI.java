@@ -22,5 +22,7 @@ public interface MemberServiceI {
 
 	int updateMember(MemberVO memberVo);
 	
+	int insertTransactionTest(MemberVO memberVo);
+	
 	
 }

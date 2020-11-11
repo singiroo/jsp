@@ -116,5 +116,15 @@ public class MemberService implements MemberServiceI {
 		return updateCnt;
 	}
 
+	@Override
+	public int insertTransactionTest(MemberVO memberVo) {
+		int cnt = 0; 
+		MemberVO memberVo2 = new MemberVO("ddit", "대덕인재", "1234", "개발원", "", "", "", "", "");
+		cnt = memberDao.insertMember(memberVo2);
+		cnt = memberDao.insertMember(memberVo);
+		cnt = memberDao.updateMember(memberVo);
+		return cnt;
+	}
+
 
 }

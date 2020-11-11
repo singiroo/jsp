@@ -19,7 +19,7 @@ public class MemberServiceTest extends ModelTestConfig {
 	@Resource(name = "memberService")
 	private MemberServiceI memberService;
 	
-	@Test
+	//@Test
 	public void insertMember_SUCCESS_Test() {
 		/***Given***/
 		MemberVO memberVo = new MemberVO("ddit", "대덕인재", "1234", "개발원", "", "", "", "", "");
@@ -45,7 +45,7 @@ public class MemberServiceTest extends ModelTestConfig {
 //	}
 	
 	
-	@Test
+	//@Test
 	public void getMemberTest() {
 		/***Given***/
 		String userid = "brown";
@@ -56,7 +56,7 @@ public class MemberServiceTest extends ModelTestConfig {
 		assertEquals("brownPass", memberVo.getPass());
 	}
 	
-	@Test
+	//@Test
 	public void selectAllMemberTest() {
 		/***Given***/
 
@@ -67,7 +67,7 @@ public class MemberServiceTest extends ModelTestConfig {
 		assertTrue(memberList.size() > 20);
 	}
 	
-	@Test
+	//@Test
 	public void selectMemberPageListTest() {
 		/***Given***/
 		PageVO pageVo = new PageVO(2, 8);
@@ -80,7 +80,7 @@ public class MemberServiceTest extends ModelTestConfig {
 		
 	}
 	
-	@Test
+	//@Test
 	public void selectPagingComponentTest() {
 		/***Given***/
 		PageVO pageVo = new PageVO(1, 8);
@@ -94,7 +94,7 @@ public class MemberServiceTest extends ModelTestConfig {
 		
 	}
 	
-	@Test
+	//@Test
 	public void deleteMemberTest() {
 		/***Given***/
 		String userId = "brown";
@@ -105,7 +105,7 @@ public class MemberServiceTest extends ModelTestConfig {
 		assertEquals(1, cnt);
 	}
 	
-	@Test
+	//@Test
 	public void updateMemberTest() {
 		/***Given***/
 		MemberVO memberVo = new MemberVO("brown", "갈색곰");
@@ -117,5 +117,16 @@ public class MemberServiceTest extends ModelTestConfig {
 		assertEquals(1, cnt);
 	}
 	
+	@Test
+	public void insertTransactionTest() {
+		/***Given***/
+		MemberVO memberVo = new MemberVO("brown", "대덕인재", "1234", "개발원", "", "", "", "", "");
+
+		/***When***/
+		int cnt = memberService.insertTransactionTest(memberVo);
+
+		/***Then****/
+		assertEquals(1, cnt);
+	}
 	
 }
