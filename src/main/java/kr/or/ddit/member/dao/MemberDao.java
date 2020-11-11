@@ -35,7 +35,7 @@ public class MemberDao implements MemberDaoI {
 	
 	
 	@Override
-	public MemberVO getMember(String userid) throws SQLException {
+	public MemberVO getMember(String userid){
 		
 		
 		MemberVO memberVo = sqlSession.selectOne("member.getMember", userid);
@@ -63,12 +63,12 @@ public class MemberDao implements MemberDaoI {
 	}
 
 	@Override
-	public List<MemberVO> selectMemberPageList(SqlSession sqlSession, PageVO pageVo) {
+	public List<MemberVO> selectMemberPageList(PageVO pageVo) {
 		return sqlSession.selectList("member.selectMemberPageList", pageVo);
 	}
 
 	@Override
-	public int selectMemberTotalCnt(SqlSession sqlSession) {
+	public int selectMemberTotalCnt() {
 		return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 
@@ -93,12 +93,12 @@ public class MemberDao implements MemberDaoI {
 	@Override
 	public int deleteMember(String userId) {
 		int deleteCnt = sqlSession.delete("member.deleteMember", userId);
-		if(deleteCnt == 1) {
-			//sqlSession.commit();
-		}
-		else {
-			//sqlSession.rollback();
-		}
+//		if(deleteCnt == 1) {
+//			//sqlSession.commit();
+//		}
+//		else {
+//			//sqlSession.rollback();
+//		}
 		
 		//sqlSession.close();
 		
@@ -109,12 +109,12 @@ public class MemberDao implements MemberDaoI {
 	public int updateMember(MemberVO memberVo) {
 		int updateCnt = sqlSession.update("member.updateMember", memberVo);
 		
-		if(updateCnt == 1) {
-			//sqlSession.commit();
-		}
-		else {
-			//sqlSession.rollback();
-		}
+//		if(updateCnt == 1) {
+//			//sqlSession.commit();
+//		}
+//		else {
+//			//sqlSession.rollback();
+//		}
 		
 		//sqlSession.close();
 		

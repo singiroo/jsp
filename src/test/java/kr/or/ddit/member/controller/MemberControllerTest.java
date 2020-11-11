@@ -33,7 +33,7 @@ public class MemberControllerTest extends WebTestConfig{
 		/***Given***/
 		MvcResult result = mockMvc.perform(get("/member/list").requestAttr("page", new PageVO()))
 								   .andExpect(status().isOk())
-								   .andExpect(view().name("member/memberList"))
+								   .andExpect(view().name("tiles/member/memberListContent"))
 								   .andDo(print())
 								   .andReturn();
 		ModelAndView mav = result.getModelAndView();
@@ -51,7 +51,7 @@ public class MemberControllerTest extends WebTestConfig{
 		/***Given***/
 		mockMvc.perform(get("/member/registView"))
 			   .andExpect(status().isOk())
-			   .andExpect(view().name("member/memberRegist"));
+			   .andExpect(view().name("tiles/member/memberRegistContent"));
 		/***When***/
 
 		/***Then***/
@@ -64,7 +64,7 @@ public class MemberControllerTest extends WebTestConfig{
 		MockMultipartFile file = new MockMultipartFile("realFileNames", "sally.png", "image/png", is);
 		
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-		map.add("userId", "test02");
+		map.add("userId", "test03");
 		map.add("userNm", "test");
 		map.add("pass",	"test001");
 		map.add("alias", "test");
@@ -88,11 +88,11 @@ public class MemberControllerTest extends WebTestConfig{
 		/***Given***/
 		MvcResult result = mockMvc.perform(get("/member/memberView").param("userId", "test02"))
 								   .andExpect(status().isOk())
-								   .andExpect(view().name("member/member"))
+								   .andExpect(view().name("tiles/member/memberContent"))
 								   .andReturn();
 		Map<String, Object> modelMap = result.getModelAndView().getModel();
 		String pass = ((MemberVO)modelMap.get("memberVo")).getPass();
-		assertEquals("test001", pass);
+		assertEquals("test002", pass);
 
 		/***When***/
 
@@ -104,11 +104,11 @@ public class MemberControllerTest extends WebTestConfig{
 		/***Given***/
 		MvcResult result = mockMvc.perform(get("/member/updateView").param("userId", "test02"))
 				   .andExpect(status().isOk())
-				   .andExpect(view().name("member/memberUpdate"))
+				   .andExpect(view().name("tiles/member/memberUpdateContent"))
 				   .andReturn();
 		Map<String, Object> modelMap = result.getModelAndView().getModel();
 		String pass = ((MemberVO)modelMap.get("memberVo")).getPass();
-		assertEquals("test001", pass);
+		assertEquals("test002", pass);
 		
 
 		/***When***/
@@ -134,7 +134,7 @@ public class MemberControllerTest extends WebTestConfig{
 		mockMvc.perform(fileUpload("/member/update").file(file).params(map))
 				.andExpect(status().is3xxRedirection())
 				.andDo(print())
-				.andExpect(redirectedUrl("/member/memberView"));
+				.andExpect(redirectedUrl("/member/memberView?userId=test02"));
 
 		/***When***/
 

@@ -28,7 +28,7 @@ public class MemberService implements MemberServiceI {
 	@Resource(name = "memberDao")
 	private MemberDaoI memberDao;
 	
-	private SqlSession sqlSession;
+	//private SqlSession sqlSession;
 	
 //	private MemberService() {
 //		memberDao = MemberDao.getDao();
@@ -42,23 +42,19 @@ public class MemberService implements MemberServiceI {
 	public MemberService() {
 	}
 	
+//	public MemberDaoI getMemberDao() {
+//		return memberDao;
+//	}
+//	
+//	public void setMemberDao(MemberDaoI memberDao) {
+//		this.memberDao = memberDao;
+//	}
+	
 	@Override
 	public MemberVO getMember(String userid) {
 		MemberVO memberVo = null;
-		try {
-			memberVo = memberDao.getMember(userid);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		memberVo = memberDao.getMember(userid);
 		return memberVo;
-	}
-
-	public MemberDaoI getMemberDao() {
-		return memberDao;
-	}
-
-	public void setMemberDao(MemberDaoI memberDao) {
-		this.memberDao = memberDao;
 	}
 	
 	@Override
@@ -69,27 +65,23 @@ public class MemberService implements MemberServiceI {
 	
 	@Override
 	public List<MemberVO> selectMemberPageList(PageVO pageVo) {
-		sqlSession = MybatisUtil.getSqlSession();
-		List<MemberVO> memberList = memberDao.selectMemberPageList(sqlSession, pageVo);
-		sqlSession.close();
+		List<MemberVO> memberList = memberDao.selectMemberPageList(pageVo);
 		return memberList;
 	}
 	
 	
 	@Override
 	public Map<String, Object> selectPagingComponent(PageVO pageVo) {
-		sqlSession = MybatisUtil.getSqlSession();
 		
 		Map<String, Object> map = new HashMap<>();
 		
-		map.put("memberList", memberDao.selectMemberPageList(sqlSession, pageVo));
+		map.put("memberList", memberDao.selectMemberPageList(pageVo));
 		
-		int totalCnt = memberDao.selectMemberTotalCnt(sqlSession);
+		int totalCnt = memberDao.selectMemberTotalCnt();
 		
 		int totalPage = (int)(Math.ceil((double)totalCnt/pageVo.getPageSize()));
 		
 		map.put("totalPage", totalPage);
-		sqlSession.close();
 		return map;
 	}
 

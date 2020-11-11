@@ -10,13 +10,13 @@ import kr.or.ddit.member.model.MemberVO;
 
 public interface MemberDaoI {
 
-	public MemberVO getMember(String userid) throws SQLException;
+	public MemberVO getMember(String userid);
 
 	public List<MemberVO> selectAllMember();
 
-	public List<MemberVO> selectMemberPageList(SqlSession sqlSession, PageVO pageVo);
+	public List<MemberVO> selectMemberPageList(PageVO pageVo);
 
-	public int selectMemberTotalCnt(SqlSession sqlSession);
+	public int selectMemberTotalCnt();
 
 	public int insertMember(MemberVO memberVo);
 

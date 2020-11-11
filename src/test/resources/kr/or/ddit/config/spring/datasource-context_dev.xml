@@ -10,12 +10,9 @@
 	     3. SqlSessionTemplate : sqlSessionFactory 객체로부터 생성하며 mybatis를 통해 sql을 실행할 수 있는 객체(sqlSession)
 	 -->
 	
-	
-	<!-- db 연결 정보를 저장하고 있는 properties 파일  -->
-	<context:property-placeholder location="classpath:kr/or/ddit/config/db/db.properties"/>
+	<context:property-placeholder location="classpath:kr/or/ddit/config/db/db_dev.properties"/>
 	
 	
-	<!-- db 연결 정보를 바탕으로 dataSource(connection pool) 빈 등록  -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="url" value="${jdbc.url}"/>
 		<property name="driverClassName" value="${jdbc.driver}"/>
@@ -23,19 +20,13 @@
 		<property name="password" value="${jdbc.password}"/>
 	</bean>
 	
-	<!-- MybatisUtil 역할을 함.
-	     sqlSession을 생성하는 fatory 객체 bean 등록
-	     sqlSession을 생성하기 위해서 db연결 정보와 mybatis 설정 정보(mapper 정보, typeAlias 정보 등) 필요  -->
+	<!-- MybatisUtil 역할을 함.  -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<!-- mybatis 설정 정보  -->
 		<property name="configLocation" value="classpath:kr/or/ddit/config/db/mybatis-config.xml"/>
-		<!-- dataSource 빈 참조  -->
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
 	
-	<!-- sqlSessionTemplate 빈
-	     sqlSessionTemplate의 생성자 중에 sqlSessionFactory를 인자로 필요로하는 것이 존재
-	     constructor injection을 이용하여 주입  -->
+	<!-- sqlSession  -->
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>

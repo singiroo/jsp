@@ -3,6 +3,7 @@ package kr.or.ddit.login.web;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -12,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -44,7 +46,8 @@ public class LoginControllerTest extends WebTestConfig {
 	public void processSuccessTest() throws Exception {
 		/***Given***/
 		mockMvc.perform(post("/login/process").param("userId", "brown")
-											  .param("pass", "brownPass"))
+											  .param("pass", "brownPass")
+											  .contentType(MediaType.APPLICATION_FORM_URLENCODED))
 				.andExpect(status().is(200))
 				.andExpect(view().name("main"))
 				.andExpect(model().attributeExists("today"));
@@ -58,8 +61,10 @@ public class LoginControllerTest extends WebTestConfig {
 	@Test
 	public void processFailTest() throws Exception {
 		/***Given***/
-		MvcResult result = mockMvc.perform(post("/login/process").param("userId", "brown")
-				  							  .param("pass", "brownPassFail")).andReturn();
+		MvcResult result = mockMvc.perform(post("/login/process").contentType(MediaType.APPLICATION_FORM_URLENCODED).param("userId", "brown")
+				  							  .param("pass", "brownPassFail"))
+											  .andDo(print())
+											  	.andReturn();
 		
 		ModelAndView mav = result.getModelAndView();
 		assertEquals("fail", mav.getModel().get("msg"));

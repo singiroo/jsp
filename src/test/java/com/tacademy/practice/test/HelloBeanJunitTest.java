@@ -32,11 +32,11 @@ public class HelloBeanJunitTest {
 	public void test1() {
 
 		Hello hello = (Hello) context.getBean("hello");
-		assertEquals("Hello, Spring", hello.sayHello());
+		assertEquals("Hello,Spring", hello.sayHello());
 		hello.print();
 
 		Printer printer = (Printer) context.getBean("printer");
-		assertEquals("Hello, Spring", printer.toString());
+		assertEquals("Hello,Spring", printer.toString());
 
 		// 두번째 인자로 클래스의 정보를 줌으로써 캐스팅 할 필요가 없음.
 		Hello hello2 = context.getBean("hello", Hello.class);
