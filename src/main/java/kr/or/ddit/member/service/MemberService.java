@@ -1,23 +1,21 @@
 package kr.or.ddit.member.service;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVO;
-import kr.or.ddit.db.util.MybatisUtil;
-import kr.or.ddit.member.dao.MemberDao;
 import kr.or.ddit.member.dao.MemberDaoI;
 import kr.or.ddit.member.model.MemberVO;
 
+@Transactional
 @Service("memberService")
 public class MemberService implements MemberServiceI {
 

@@ -15,22 +15,11 @@
   	<!-- 해당 param-name 은 스프링 프레임워크에서 정한 약속.  -->
   	<param-name>contextConfigLocation</param-name>
   	<!-- 컨테이너의 설정 정보  -->
-  	<param-value>
-  		kr.or.ddit.config.spring.RootContext
-  		kr.or.ddit.config.spring.AopContext
-  		kr.or.ddit.config.spring.DataSourceContext
-  		kr.or.ddit.config.spring.TransactionContext
-  	
-  	</param-value>
-  	<!-- <param-value>classpath:kr/or/ddit/config/spring/root-context.xml
+  	<param-value>classpath:kr/or/ddit/config/spring/root-context.xml
   				 classpath:kr/or/ddit/config/spring/aop-context.xml
   				 classpath:kr/or/ddit/config/spring/datasource-context.xml
   				 classpath:kr/or/ddit/config/spring/transaction-context.xml
-  				 </param-value> -->
-  </context-param>
-  <context-param>
-  	<param-name>contextClass</param-name>
-	<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>  
+  				 </param-value>
   </context-param>
 	
   <!-- 컨테이너의 설정 정보를 참조할 수 있는 약속된 이름으로 전역 파라미터로 등록 시킨후 리스너를 등록 시켜 컨텍스트가 로드될 때 빈을 등록시킨다.
@@ -48,14 +37,9 @@
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
   		<param-name>contextConfigLocation</param-name>
-  		<param-value>
-  					kr.or.ddit.config.spring.ApplicationContext
-  					kr.or.ddit.config.spring.InterceptorContext
-  		</param-value>
-  	</init-param>
-  	<init-param>
-	  	<param-name>contextClass</param-name>
-		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>  
+  		<param-value>classpath:kr/or/ddit/config/spring/application-context.xml
+  					 classpath:kr/or/ddit/config/spring/interceptor-context.xml
+  					 </param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
   </servlet>
