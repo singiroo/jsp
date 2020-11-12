@@ -1,0 +1,14 @@
+ibatis
+<property name="Pool.MaximumActionConnections" value="2"/>
+<property name="Pool.MaximumIdleConnections" value="2"/>
+
+mybatis - datasource-context.xml - 
+<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+ 	<property name="url" value="${jdbc.url}"/>
+ 	<property name="driverClassName" value="${jdbc.driver}"/>
+ 	<property name="username" value="${jdbc.username}"/>
+ 	<property name="password" value="${jdbc.password}"/>
+ 	<property name="maxTotal" value="2"/>
+ 	<property name="maxIdle" value="2"/>
+ </bean>
+
