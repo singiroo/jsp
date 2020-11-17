@@ -20,11 +20,13 @@
 	     만약 변경을 원하면 해당 속성을 다른 값으로 설정하면 된다
 	     스프링 컨트롤러에서 리턴하는 viewName에 해당하는 tiles definition 이름이 있는지 찾아
 	     동일한 값이 있을 경우 해당 definition을 통해 응답을 생성한다.
+	     
 	     tiles.member.list
 	     tiles.member.member
 	     tiles.member.regist
 	     tiles.member.update
 	     tiles.*.*
+	     
 	     {1} : 첫번째 세그먼트
 	     {2} : 두번째 세그먼트
 	     * : 세그먼트
