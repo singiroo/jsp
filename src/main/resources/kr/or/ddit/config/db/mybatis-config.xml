@@ -11,6 +11,8 @@
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.member.model.MemberVO" alias="MemberVO"/>
 		<typeAlias type="kr.or.ddit.common.model.PageVO" alias="PageVO"/>
+		<typeAlias type="kr.or.ddit.yogurt.model.CycleVO" alias="CycleVO"/>
+		<typeAlias type="kr.or.ddit.yogurt.model.DailyVO" alias="DailyVO"/>
 	</typeAliases>
 <!--   <environments default="development">
     <environment id="development">		
@@ -26,5 +28,6 @@
  -->  
  <mappers>
     <mapper resource="kr/or/ddit/config/db/mapper/member.xml"/>   
+    <mapper resource="kr/or/ddit/config/db/mapper/yogurt.xml"/>   
   </mappers>
 </configuration>
